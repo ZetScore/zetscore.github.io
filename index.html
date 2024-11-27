@@ -1,56 +1,222 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-   <!-- Essential Meta Tags -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ZetScore</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
-  <style>
-    a {
-      text-decoration: none; 
-    }
-
-    /* Make the Join Priority List text smaller on small screens */
-    @media screen and (max-width: 600px) {
-      .small-text {
-        font-size: 12px; 
-      }
-    }
-  </style>
- 
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anek+Telugu:wght@100..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+    rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/f39b7b4e17.js" crossorigin="anonymous"></script>
+  <link rel="icon" href="Images/favicon.png" />
 </head>
-<body>
 
-<!-- Navbar (sit on top) -->
-<div class="w3-top">
-  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
-    <a href="#home" class="w3-bar-item w3-button"><b>ZetScore</b></a>
-    <!-- Float links to the right. Hide them on small screens -->
-    <div class="w3-right">
-      <a href="https://forms.zohopublic.com/evolvizsoftwaresgroup/form/ZetScoreDemoRequest/formperma/Q7VIFiPZauUdJviXd8JnvwE8T27rF2wzbLvFBTWh4Vs" class="w3-bar-item w3-button w3-teal"> 
-        <b> Priority List </b>
-      </a>
+<body>
+  <div class="w3-top">
+    <div class="w3-bar w3-card">
+      <div class="w3-container w3-row-padding">
+        <img src="Images/z-high-resolution-logo.png" class="logo-img" />
+
+        <!-- Right-sided navbar links -->
+        <div class="nav-links w3-center w3-right w3-hide-small">
+          <a href="#home" class="w3-bar-item">HOME</a>
+          <a href="#features" class="w3-bar-item">FEATURES</a>
+          <a href="https://forms.zohopublic.com/evolvizsoftwaresgroup/form/ZetScoreDemoRequest/formperma/Q7VIFiPZauUdJviXd8JnvwE8T27rF2wzbLvFBTWh4Vs"
+            class="btn-cta w3-bar-item w3-text-white">JOIN PRIORITY LIST
+          </a>
+        </div>
+        <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium"
+          onclick="w3_open()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- Header -->
-<header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
-  <img class="w3-image" src="images/Header.jpg" alt="Header" style="width:100%; height:auto;">
-  <div class="w3-display-middle w3-margin-top w3-center">
-    <h1 class="w3-text-white small-text">
-      <span class="w3-padding w3-black w3-opacity-min"><b>Join Priority List</b></span>
-    </h1>
+  <!-- Sidebar on small screens when clicking the menu icon -->
+  <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large"
+    style="display: none" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+    <a href="#home" onclick="w3_close()" class="w3-bar-item w3-button">HOME</a>
+    <a href="#features" onclick="w3_close()" class="w3-bar-item w3-button">FEATURES</a>
+    <a href="https://forms.zohopublic.com/evolvizsoftwaresgroup/form/ZetScoreDemoRequest/formperma/Q7VIFiPZauUdJviXd8JnvwE8T27rF2wzbLvFBTWh4Vs"
+      class="btn-cta">JOIN PRIORITY LIST</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="w3-container w3-center w3-row hero-section" id="home">
+    <div class="w3-half w3-padding-large w3-left-align">
+      <h1 class="w3-text-white">
+        Boost Team Performance <br />with ZetScore
+      </h1>
+      <p class="subheader">
+        ZetScore is a powerful Employee Performance Management Software that
+        helps teams set goals, track progress, and boost productivity with
+        real-time insights.
+      </p>
+      <br /> <br />
+      <a href="https://forms.zohopublic.com/evolvizsoftwaresgroup/form/ZetScoreDemoRequest/formperma/Q7VIFiPZauUdJviXd8JnvwE8T27rF2wzbLvFBTWh4Vs"
+        class="cta-button w3-round-large w3-xlarge">JOIN PRIORITY LIST</a>
+    </div>
+    <div class="w3-half w3-padding-large">
+      <img src="/Images/group-afro-americans-working-together.jpg" alt="Team working" class="w3-image hero-image" />
+    </div>
+  </header>
+
+  <!-- Features section -->
+
+  <div class="w3-container w3-padding-32" style="background-color: #3d9970; margin-bottom: 32px" id="features">
+    <h2 class="w3-center w3-text-white">KEY FEATURES</h2>
+    <p class="w3-large w3-text-white w3-center" style="font-size: 2rem !important;">
+      Discover how ZetScore drives employee success and simplifies performance
+      management.
+    </p>
+    <br /> <br />
+    <div class="w3-row-padding">
+      <!-- Feature 1 -->
+      <div class="w3-col m6 l4 w3-center w3-margin-bottom">
+        <div class="w3-card w3-white w3-padding-large feature-card">
+          <img src="Images/Peer_Review.png" alt="Peer Review" class="feature-icon" />
+          <h3 style="font-weight: bold; color: #3d9970;">Peer Review</h3>
+          <p style="font-size: 1.3rem; text-align: justify;">
+            Encourage growth with constructive feedback mechanism that highlights what an individual excels at and offers actionable suggestions for improvement.
+          </p>
+        </div>
+      </div>
+      <!-- Feature 2 -->
+      <div class="w3-col m6 l4 w3-center w3-margin-bottom">
+        <div class="w3-card w3-white w3-padding-large feature-card">
+          <img src="Images/Assessment.png" alt="Assessment"
+            class="feature-icon" />
+          <h3 style="font-weight: bold; color: #3d9970;">Assessment</h3>
+          <p style="font-size: 1.3rem; text-align: justify;">
+            Assess employee performance using self-evaluation and manager evaluation to ensure fair and objective feedback based on defined categories.
+          </p>
+        </div>
+      </div>
+      <!-- Feature 3 -->
+      <div class="w3-col m6 l4 w3-center w3-margin-bottom">
+        <div class="w3-card w3-white w3-padding-large feature-card">
+          <img src="Images/Employee-Wellbeing-Main.jpg" alt="Employee Wellbeing" class="feature-icon" />
+          <h3 style="font-weight: bold; color: #3d9970;">Employee Wellbeing</h3>
+          <p style="font-size: 1.3rem; text-align: justify;">
+            Cultivate a holistic work environment by focusing on health, job satisfaction, financial wellbeing and fostering social connections within the workplace.
+          </p>
+        </div>
+      </div>
+      <!-- Feature 4 -->
+      <div class="w3-col m6 l4 w3-center w3-margin-bottom">
+        <div class="w3-card w3-white w3-padding-large feature-card">
+          <img src="Images/images.png" alt="Net Promoter System" class="feature-icon" />
+          <h3 style="font-weight: bold; color: #3d9970;">Net Promoter System</h3>
+          <p style="font-size: 1.3rem; text-align: justify;">
+            Utilize eNPS and cNPS to gauge employee and customer engagement and satisfaction through insightful
+            feedback metrics.
+          </p>
+        </div>
+      </div>
+      <!-- Feature 5 -->
+      <div class="w3-col m6 l4 w3-center w3-margin-bottom">
+        <div class="w3-card w3-white w3-padding-large feature-card">
+          <img src="Images/personal development plan.png" alt="Personal Development" class="feature-icon" />
+          <h3 style="font-weight: bold; color: #3d9970;">Personal Development</h3>
+          <p style="font-size: 1.3rem; text-align: justify;">
+            Empower employees by highlighting key areas for their professional growth and career progression within the company.
+          </p>
+        </div>
+      </div>
+      <!-- Feature 6 -->
+      <div class="w3-col m6 l4 w3-center w3-margin-bottom">
+        <div class="w3-card w3-white w3-padding-large feature-card">
+          <img src="Images/statistics.png" alt="Workforce Analytics" class="feature-icon" />
+          <h3 style="font-weight: bold; color: #3d9970;">Workforce Analytics</h3>
+          <p style="font-size: 1.3rem; text-align: justify;">
+            Our core analytics provides data-driven insights to evaluate employee
+            performance, enhance productivity through tailored ...  
+            <a onclick="document.getElementById('modal').style.display='block'" style="color: #3d9970; text-decoration: dashed; cursor: pointer;">Read More</a>
+          </p>
+          
+        </div>
+      </div>
+    </div>
   </div>
-</header>
+
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-24 w3-small w3-text-white" style="background-color: black;">
+    <div class="w3-row-padding">
+      <!-- Logo and Title -->
+      <div class="w3-col m6">
+        <div class="footer-logo">
+          <h2 class="w3-bold w3-uppercase w3-margin-top" style="font-size: 2rem;">ZetScore</h2>
+        </div>
+      </div>
+
+      <!-- Social Links -->
+      <div class="w3-col m6">
+        <div class="w3-right">
+          <a href="https://www.linkedin.com/company/zetscore" class="w3-text-white w3-margin-right"
+            style="font-size: 2.5rem; text-decoration: none;">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="/" class="w3-text-white" style="font-size: 2.5rem; text-decoration: none;">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <hr class="w3-border-white w3-opacity w3-margin-top">
+
+    <!-- Footer Text -->
+    <div class="w3-center">
+      <p style="font-size: 1.2rem;">
+        Powered By &copy; 2023 Evolv IZSoftwares Group Ltd. All rights reserved.
+      </p>
+    </div>
+  </footer>
 
 
-<!-- Footer -->
-<footer class="w3-center w3-black w3-padding-16">
-  <p>Powered by <a href="https://izsoftwares.com" class="w3-hover-text-teal"> Evolv IZSoftwares Group </a> </p>
-</footer>
+  <!-- Read More Modal -->
+  <div id="modal" class="w3-modal">
+    <div class="w3-modal-content w3-animate-zoom">
+      <header class="w3-container w3-center" style="color: #3d9970;">
+        <span onclick="document.getElementById('modal').style.display='none'"
+          class="w3-button w3-display-topright">&times;</span>
+        <h2>Workforce Analytics</h2>
+      </header>
+      <div class="w3-container">
+        <p style="font-size: 1.2rem;">
+          Our core analytics provides data-driven insights to evaluate employee
+          performance, enhance productivity through tailored development plans, and empower executives
+          with actionable insights to make data-driven decisions.
+          <br /> <br />
+          Through this tailored strategies, we help employees grow through personalized growth plans and this drives productivity, 
+          and enable leadership to make informed decisions based on real-time data.
+          <br /> <br />
 
+      </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Script -->
+  <script>
+    var modal = document.getElementById("modal");
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+
+  <script src="script.js"></script>
 </body>
+
 </html>
