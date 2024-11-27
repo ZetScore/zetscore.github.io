@@ -76,6 +76,7 @@ html {
   color: #e0e0e0;
   margin-bottom: 20px;
   max-width: 80%;
+  text-align: justify;
 }
 
 .cta-button {
