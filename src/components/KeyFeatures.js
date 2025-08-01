@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import pearReviewImage from "../assets/Peer_Review.png";
 import assessmentImage from "../assets/Assessment.png";
@@ -50,30 +50,30 @@ const KeyFeatures = () => {
   ];
 
   return (
-    <section id="features" className="bg-custom-green py-16">
-      <div className="mx-auto px-4 grid grid-cols-12 items-center">
+    <section id="features" className="py-16 bg-custom-green">
+      <div className="grid items-center grid-cols-12 px-4 mx-auto">
         <div className="col-span-10 col-start-2">
-          <h2 className="text-white font-primary text-6xl sm:text-4xl font-bold text-center mb-6 ">
+          <h2 className="mb-6 text-6xl font-bold text-center text-white font-primary sm:text-4xl ">
             KEY FEATURES
           </h2>
-          <p className="text-white font-primary text-lg sm:text-xl text-center mb-10">
+          <p className="mb-10 text-lg text-center text-white font-primary sm:text-xl">
             Discover how ZetScore drives employee success and simplifies performance management.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 ">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 ">
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="bg-white font-primary shadow-lg rounded-lg p-6 transition-transform hover:scale-105 text-justify inter-character"
+                className="p-6 text-justify transition-transform bg-white rounded-lg shadow-lg font-primary hover:scale-105 inter-character"
               >
                 <img
                   src={feature.image}
                   alt={feature.title}
                   className="w-20 h-20 mx-auto mb-4"
                 />
-                <h3 className="text-lg font-bold text-custom-green mb-2 text-center">
+                <h3 className="mb-2 text-lg font-bold text-center text-custom-green">
                   {feature.title}
                 </h3>
-                <p className="text-black-700 text-sm">
+                <p className="text-sm text-black-700">
                   {feature.title === "Workforce Analytics"
                     ? feature.description.slice(0, 100) + "..."
                     : feature.description}
@@ -81,7 +81,7 @@ const KeyFeatures = () => {
                 {feature.title === "Workforce Analytics" && (
                   <button
                     onClick={() => setIsModalOpen(true)}
-                    className="text-custom-green font-bold underline text-sm mt-4"
+                    className="mt-4 text-sm font-bold underline text-custom-green"
                   >
                     Read More
                   </button>
@@ -92,31 +92,31 @@ const KeyFeatures = () => {
         </div>
       </div>
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-8 w-11/12 md:w-2/3 lg:w-1/3 relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="relative w-11/12 p-8 bg-white rounded-lg md:w-2/3 lg:w-1/3">
 
             <FaTimes
               onClick={() => setIsModalOpen(false)}
-              className="absolute top-4 right-4 text-black-600 cursor-pointer hover:text-custom-green"
+              className="absolute cursor-pointer top-4 right-4 text-black-600 hover:text-custom-green"
               size={24}
             />
           
-            <h2 className="text-2xl font-bold text-center text-custom-green mb-6">
+            <h2 className="mb-6 text-2xl font-bold text-center text-custom-green">
               Workforce Analytics
             </h2>
         
-            <p className="text-gray-700 text-justify inter-character">
+            <p className="text-justify text-gray-700 inter-character">
   Our core analytics provides data-driven insights to evaluate employee performance, enhance productivity through tailored development plans, and empower executives with actionable insights to make data-driven decisions.
 </p>
-<p className="text-gray-700 text-justify inter-character mt-4">
+<p className="mt-4 text-justify text-gray-700 inter-character">
   Through this tailored strategies, we help employees grow through personalized growth plans and this drives productivity, and enable leadership to make informed decisions based on real-time data.
 </p>
 
           
-            <div className="text-center mt-6">
+            <div className="mt-6 text-center">
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="bg-custom-green text-white font-bold px-6 py-2 rounded-lg"
+                className="px-6 py-2 font-bold text-white rounded-lg bg-custom-green"
               >
                 OK
               </button>
