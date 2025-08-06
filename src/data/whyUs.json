@@ -1,0 +1,38 @@
+[
+  {
+    "icon": "fluent-mdl2:review-solid",
+    "title": "Peer Review",
+    "description": "Encourage growth with constructive feedback mechanism that highlights what an individual excels at and offers actionable suggestions for improvement.",
+    "fullDescription": "Our Peer Review tool empowers your team with a structured and anonymous way to provide and receive feedback. This fosters a culture of continuous improvement, enhances collaboration, and helps identify areas for individual and team development, leading to overall performance enhancement."
+  },
+  {
+    "icon": "fluent-mdl2:assessment-group-template",
+    "title": "Assessment",
+    "description": "Assess employee performance using self-evaluation and manager evaluation to ensure fair and objective feedback based on defined categories.",
+    "fullDescription": "Our Assessment capabilities provide comprehensive tools for evaluating performance, skills, and knowledge within your workforce. Conduct various types of assessments, track individual and team progress, and gain insights to make informed decisions about training and development."
+  },
+  {
+    "icon": "material-symbols-light:digital-wellbeing-outline-rounded",
+    "title": "Employee Wellbeing",
+    "description": "Cultivate a holistic work environment by focusing on health, job satisfaction, financial wellbeing, and fostering social connections within the workplace.",
+    "fullDescription": "ZetScore recognizes the critical role of employee wellbeing in productivity and retention. Our platform includes features designed to support the mental and physical health of your team, from stress management resources to work-life balance monitoring. A happy workforce is a productive workforce."
+  },
+  {
+    "icon": "mdi:poll-box-outline",
+    "title": "Net Promoter System",
+    "description": "Utilize eNPS and cNPS to gauge employee and customer engagement and satisfaction through insightful feedback metrics.",
+    "fullDescription": "Understand your employee's and customer's voice with our integrated Net Promoter System (eNPS and cNPS). This powerful tool allows you to gauge employee and customer engagement and satisfaction, identify promoters and detractors, and gain actionable insights to improve your services and foster a stronger workforce and customer base."
+  },
+  {
+    "icon": "mdi:chart-line",
+    "title": "Personal Development",
+    "description": "Empower employees by highlighting key areas for their professional growth and career progression within the company.",
+    "fullDescription": "ZetScore empowers employees by identifying key areas for professional growth and career progression. Our platform provides tailored development plans, resources, and opportunities to help employees achieve their career goals while contributing to the company's success."
+  },
+  {
+    "icon": "mdi:chart-timeline-variant-shimmer",
+    "title": "Workforce Analytics",
+    "description": "Our core analytics provides data-driven insights to evaluate employee performance, enhance productivity through tailored development plans, and empower executives with actionable insights.",
+    "fullDescription": "Make data-driven decisions with ZetScore's Workforce Analytics. Our platform provides comprehensive dashboards and reports on key HR metrics, employee engagement, productivity trends, and more. Understand your workforce dynamics better and optimize your strategies for maximum efficiency."
+  }
+]

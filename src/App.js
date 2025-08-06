@@ -5,6 +5,7 @@ import KeyFeatures from './components/KeyFeatures';
 import Hero from './components/Hero';
 import Pricing from './components/Pricing';
 import WhyUs from "./components/WhyUs";
+import FAQSection from "./components/FAQSection";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
               <Hero />
               <WhyUs />
               <KeyFeatures />
+              <FAQSection />
             </>
           } />
           <Route path="/pricing" element={<Pricing />} />

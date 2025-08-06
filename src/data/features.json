@@ -1,0 +1,33 @@
+[
+  {
+    "title": "Peer Review",
+    "description": "Encourage growth with constructive feedback mechanism that highlights what an individual excels at and offers actionable suggestions for improvement.",
+    "image": "Peer_Review.png"
+  },
+  {
+    "title": "Assessment",
+    "description": "Assess employee performance using self-evaluation and manager evaluation to ensure fair and objective feedback based on defined categories.",
+    "image": "Assessment.png"
+  },
+  {
+    "title": "Employee Wellbeing",
+    "description": "Cultivate a holistic work environment by focusing on health, job satisfaction, financial wellbeing, and fostering social connections within the workplace.",
+    "image": "Employee-Wellbeing-Main.jpg"
+  },
+  {
+    "title": "Net Promoter System",
+    "description": "Utilize eNPS and cNPS to gauge employee and customer engagement and satisfaction through insightful feedback metrics.",
+    "image": "Net_Promoter_System.png"
+  },
+  {
+    "title": "Personal Development",
+    "description": "Empower employees by highlighting key areas for their professional growth and career progression within the company.",
+    "image": "pesrsonal development plan.png"
+  },
+  {
+    "title": "Workforce Analytics",
+    "description": "Our core analytics provides data-driven insights to evaluate employee performance, enhance productivity through tailored development plans, and empower executives with actionable insights to make data-driven decisions.",
+    "image": "statistics.png",
+    "fullDescription": "Our core analytics provides data-driven insights to evaluate employee performance, enhance productivity through tailored development plans, and empower executives with actionable insights to make data-driven decisions. Through this tailored strategies, we help employees grow through personalized growth plans and this drives productivity, and enable leadership to make informed decisions based on real-time data."
+  }
+]

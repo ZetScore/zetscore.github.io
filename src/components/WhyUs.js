@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Icon } from '@iconify/react';
+import reasonsData from '../data/whyUs.json';
 
 const WhyUs = () => {
   const [showModal, setShowModal] = useState(false);
@@ -14,50 +15,6 @@ const WhyUs = () => {
     setShowModal(false);
   };
 
-  // Define the reasons to choose us with new titles and Iconify icons
-  const reasons = [
-    {
-      icon: <Icon icon="fluent-mdl2:review-solid" className="w-8 h-8 text-custom-green" />,
-      title: "Peer Review",
-      description:
-        "Facilitate constructive feedback among team members to foster growth and and enhance overall team dynamics.",
-      fullDescription:
-        "Our Peer Review tool empowers your team with a structured and anonymous way to provide and receive feedback. This fosters a culture of continuous improvement, enhances collaboration, and helps identify areas for individual and team development, leading to overall performance enhancement.",
-    },
-    {
-      icon: <Icon icon="fluent-mdl2:assessment-group-template" className="w-8 h-8 text-custom-green" />,
-      title: "Assessment",
-      description:
-        "Streamline evaluation processes and track progress effectively across your organization to identify strengths and areas for improvement.",
-      fullDescription:
-        "Our Assessment capabilities provide comprehensive tools for evaluating performance, skills, and knowledge within your workforce. Conduct various types of assessments, track individual and team progress, and gain insights to make informed decisions about training and development.",
-    },
-    {
-      icon: <Icon icon="material-symbols-light:digital-wellbeing-outline-rounded" className="w-8 h-8 text-custom-green" />,
-      title: "Employee Well-Being",
-      description:
-        "Prioritize the health and happiness of your workforce with dedicated wellbeing features, fostering a supportive work environment.",
-      fullDescription:
-        "Zetcollect recognizes the critical role of employee well-being in productivity and retention. Our platform includes features designed to support the mental and physical health of your team, from stress management resources to work-life balance monitoring. A happy workforce is a productive workforce.",
-    },
-    {
-      icon: <Icon icon="mdi:poll-box-outline" className="w-8 h-8 text-custom-green" />,
-      title: "Net Promoter System",
-      description:
-        "Measure customer loyalty and satisfaction to drive business growth and identify advocates for your brand.",
-      fullDescription:
-        "Understand your customer's voice with our integrated Net Promoter System (NPS). This powerful tool allows you to gauge customer loyalty and satisfaction, identify promoters and detractors, and gain actionable insights to improve your services and foster a stronger customer base.",
-    },
-    {
-      icon: <Icon icon="mdi:chart-timeline-variant-shimmer" className="w-8 h-8 text-custom-green" />,
-      title: "Workforce Analytics",
-      description:
-        "Gain deep insights into your workforce performance, engagement, and productivity through comprehensive data analysis.",
-      fullDescription:
-        "Make data-driven decisions with Zetcollect's Workforce Analytics. Our platform provides comprehensive dashboards and reports on key HR metrics, employee engagement, productivity trends, and more. Understand your workforce dynamics better and optimize your strategies for maximum efficiency.",
-    },
-  ];
-
   return (
     <section className="py-16 bg-white">
       <div className="grid items-center grid-cols-12 px-4 mx-auto">
@@ -69,13 +26,13 @@ const WhyUs = () => {
             Discover what sets ZetScore apart in delivering exceptional value to our clients.
           </p>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {reasons.map((reason, index) => (
+            {reasonsData.map((reason, index) => (
               <div
                 key={index}
                 className="flex flex-col items-center p-8 text-center bg-white border border-gray-100 rounded-lg shadow-md transition-all duration-300 ease-in-out hover:shadow-xl hover:shadow-custom-green/20 hover:scale-[1.02]"
               >
                 <div className="flex items-center justify-center w-20 h-20 mb-6 bg-gray-100 rounded-full">
-                  {reason.icon}
+                  <Icon icon={reason.icon} className="w-8 h-8 text-custom-green" />
                 </div>
                 <h3 className="mb-3 text-xl font-semibold text-gray-800">
                   {reason.title}
