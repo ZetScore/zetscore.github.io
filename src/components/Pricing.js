@@ -1,19 +1,22 @@
-
 const Pricing = () => {
   // Helper component for the checkmark icon
   const CheckIcon = () => (
     <svg className="w-6 h-6 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 0 001.414 0l4-4z" clipRule="evenodd"></path>
     </svg>
   );
 
-  // Define the features for comparison
   const compareFeatures = [
-    { name: "Peer Review Assessment", premium: true, enterprise: true },
-    { name: "Employee Wellbeing", premium: true, enterprise: true },
-    { name: "Net Promoter System", premium: true, enterprise: true },
-    { name: "Personal Development", premium: true, enterprise: true },
-    { name: "Workforce Analytics", premium: false, enterprise: true },
+    { name: "Peer Review", business: true, enterprise: true },
+    { name: "Assessment", business: true, enterprise: true },
+    { name: "Personal Development", business: true, enterprise: true },
+    { name: "Workforce Analytics", business: true, enterprise: true },
+    { name: "Net Promoter Score (eNPS & cNPS)", business: false, enterprise: true },
+    { name: "Employee Wellbeing", business: false, enterprise: true },
+    { name: "Access to Training Course", business: false, enterprise: true },
+    { name: "Custom Domain", business: "Default", enterprise: "Private Domain" },
+    { name: "Custom Branding", business: "Default", enterprise: "Personal Branding" },
+    { name: "Storage", business: "5 GB of storage", enterprise: "Unlimited Storage" },
   ];
 
   return (
@@ -30,9 +33,14 @@ const Pricing = () => {
               Flexible pricing plans to suit businesses of all sizes.
             </p>
             <div className="flex justify-start">
-              <button className="px-6 py-2 font-bold text-white transition duration-300 rounded-lg bg-custom-green hover:bg-opacity-90">
-                Get Started
-              </button>
+              <a
+                href="https://forms.zohopublic.com/evolvizsoftwaresgroup/form/ZetScoreDemoRequest/formperma/Q7VIFiPZauUdJviXd8JnvwE8T27rF2wzbLvFBTWh4Vs"
+                className="inline-block"
+              >
+                <button className="px-6 py-2 font-bold text-white transition duration-300 rounded-lg bg-custom-green hover:bg-opacity-90">
+                  Get Started
+                </button>
+              </a>
             </div>
           </div>
         </div>
@@ -46,31 +54,19 @@ const Pricing = () => {
               Flexible fees tailored to your business
             </h2>
             <div className="flex flex-col items-stretch justify-center gap-8 md:flex-row">
-              {/* Premium Plan Card */}
+              {/* Business Plan */}
               <div className="flex flex-col justify-between flex-1 p-8 bg-white rounded-lg shadow-lg">
                 <div>
-                  <h3 className="mb-4 text-2xl font-bold text-left">Premium</h3>
+                  <h3 className="mb-4 text-2xl font-bold text-left">Business</h3>
                   <p className="mb-6 text-left text-gray-600">
                     Standard pricing for growing businesses.
                   </p>
                   <h4 className="mb-4 text-lg font-semibold text-left">You get:</h4>
                   <ul className="mb-8 space-y-3">
-                    <li className="flex items-center text-gray-700">
-                      <span className="inline-flex w-5 h-5 mr-2"><CheckIcon /></span>
-                      Peer Review Assessment
-                    </li>
-                    <li className="flex items-center text-gray-700">
-                      <span className="inline-flex w-5 h-5 mr-2"><CheckIcon /></span>
-                      Employee Wellbeing
-                    </li>
-                    <li className="flex items-center text-gray-700">
-                      <span className="inline-flex w-5 h-5 mr-2"><CheckIcon /></span>
-                      Net Promoter System
-                    </li>
-                    <li className="flex items-center text-gray-700">
-                      <span className="inline-flex w-5 h-5 mr-2"><CheckIcon /></span>
-                      Personal Development
-                    </li>
+                    <li className="flex items-center text-gray-700"><span className="inline-flex w-5 h-5 mr-2"><CheckIcon /></span>Peer Review</li>
+                    <li className="flex items-center text-gray-700"><span className="inline-flex w-5 h-5 mr-2"><CheckIcon /></span>Assessment</li>
+                    <li className="flex items-center text-gray-700"><span className="inline-flex w-5 h-5 mr-2"><CheckIcon /></span>Personal Development</li>
+                    <li className="flex items-center text-gray-700"><span className="inline-flex w-5 h-5 mr-2"><CheckIcon /></span>Workforce Analytics</li>
                   </ul>
                 </div>
                 <div className="flex justify-start">
@@ -80,23 +76,20 @@ const Pricing = () => {
                 </div>
               </div>
 
-              {/* Enterprise Plan Card */}
+              {/* Enterprise Plan */}
               <div className="flex flex-col justify-between flex-1 p-8 text-white bg-black rounded-lg shadow-lg">
                 <div>
                   <h3 className="mb-4 text-2xl font-bold text-left">Enterprise</h3>
                   <p className="mb-6 text-left text-white">
                     Custom rates with dedicated support and advanced features.
                   </p>
-                  <h4 className="mb-4 text-lg font-semibold text-left">Everything from Premium, Plus:</h4>
+                  <h4 className="mb-4 text-lg font-semibold text-left">Everything from Business, Plus:</h4>
                   <ul className="mb-8 space-y-3">
-                    <li className="flex items-center text-white">
-                      <span className="inline-flex w-5 h-5 mr-2"><CheckIcon /></span>
-                      Workforce Analytics
-                    </li>
-                    <li className="flex items-center text-white">
-                      <span className="inline-flex w-5 h-5 mr-2"><CheckIcon /></span>
-                      24/7 Enterprise Support
-                    </li>
+                    <li className="flex items-center text-white"><span className="inline-flex w-5 h-5 mr-2"><CheckIcon /></span>Net Promoter Score (eNPS & cNPS)</li>
+                    <li className="flex items-center text-white"><span className="inline-flex w-5 h-5 mr-2"><CheckIcon /></span>Employee Wellbeing</li>
+                    <li className="flex items-center text-white"><span className="inline-flex w-5 h-5 mr-2"><CheckIcon /></span>Unlimited Storage</li>
+                    <li className="flex items-center text-white"><span className="inline-flex w-5 h-5 mr-2"><CheckIcon /></span>Access to Training Course</li>
+                    <li className="flex items-center text-white"><span className="inline-flex w-5 h-5 mr-2"><CheckIcon /></span>24/7 Enterprise Support</li>
                   </ul>
                 </div>
                 <div className="flex justify-start">
@@ -125,41 +118,33 @@ const Pricing = () => {
                 <thead>
                   <tr className="border-b border-gray-200">
                     <th className="w-1/2 px-6 py-4 font-semibold text-left text-gray-600">Compare features</th>
-                    <th className="w-1/4 px-6 py-4 font-semibold text-center text-gray-600">Premium</th>
+                    <th className="w-1/4 px-6 py-4 font-semibold text-center text-gray-600">Business</th>
                     <th className="w-1/4 px-6 py-4 font-semibold text-center text-gray-600">Enterprise</th>
                   </tr>
                 </thead>
                 <tbody>
                   {compareFeatures.map((feature, index) => (
                     <tr key={index} className="border-b border-gray-100">
-                      <td className="px-6 py-4 text-left text-gray-700">
-                        {feature.name}
-                      </td>
+                      <td className="px-6 py-4 text-left text-gray-700">{feature.name}</td>
                       <td className="px-6 py-4 text-center">
                         <div className="flex flex-col items-center">
-                          {feature.premium ? <CheckIcon /> : null}
+                          {typeof feature.business === 'boolean' ? (feature.business ? <CheckIcon /> : null) : feature.business}
                         </div>
                       </td>
                       <td className="px-6 py-4 text-center">
                         <div className="flex flex-col items-center">
-                          {feature.enterprise ? <CheckIcon /> : null}
+                          {typeof feature.enterprise === 'boolean' ? (feature.enterprise ? <CheckIcon /> : null) : feature.enterprise}
                         </div>
                       </td>
                     </tr>
                   ))}
                   <tr className="border-b border-gray-100">
-                    <td className="px-6 py-4 text-left text-gray-700">
-                      Support
+                    <td className="px-6 py-4 text-left text-gray-700">Support</td>
+                    <td className="px-6 py-4 text-center">
+                      <div className="flex flex-col items-center">Local Business Hours Support</div>
                     </td>
                     <td className="px-6 py-4 text-center">
-                      <div className="flex flex-col items-center">
-                        Local Business Hours Support
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 text-center">
-                      <div className="flex flex-col items-center">
-                        24/7 Enterprise Support
-                      </div>
+                      <div className="flex flex-col items-center">24/7 Enterprise Support</div>
                     </td>
                   </tr>
                 </tbody>
