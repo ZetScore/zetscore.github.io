@@ -6,6 +6,7 @@ import Hero from './components/Hero';
 import Pricing from './components/Pricing';
 import WhyUs from "./components/WhyUs";
 import FAQSection from "./components/FAQSection";
+import ContactUsPage from "./components/ContactUsPage";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
             </>
           } />
           <Route path="/pricing" element={<Pricing />} />
+          <Route path="/contact-us" element={<ContactUsPage />} />
         </Routes>
         <Footer />
       </div>

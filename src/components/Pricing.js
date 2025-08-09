@@ -24,8 +24,8 @@ const Pricing = () => {
       {/* Section 1: Fair pricing for faster growth */}
       <section className="relative h-screen bg-center bg-cover" style={{ backgroundImage: "url('/pricing-hero-section.jpg')" }}>
         <div className="absolute inset-0 bg-black opacity-40"></div>
-        <div className="grid grid-cols-12 px-2 py-2 mx-auto">
-          <div className="relative z-10 flex flex-col items-start h-full col-span-10 col-start-2 pt-32 text-white">
+        <div className="grid h-full grid-cols-12 px-2 py-2 mx-auto">
+          <div className="relative z-10 flex flex-col items-start justify-center col-span-10 col-start-2 text-white">
             <h1 className="mb-6 text-4xl font-bold leading-tight text-left md:text-6xl">
               Fair pricing for faster growth
             </h1>
@@ -67,6 +67,7 @@ const Pricing = () => {
                     <li className="flex items-center text-gray-700"><span className="inline-flex w-5 h-5 mr-2"><CheckIcon /></span>Assessment</li>
                     <li className="flex items-center text-gray-700"><span className="inline-flex w-5 h-5 mr-2"><CheckIcon /></span>Personal Development</li>
                     <li className="flex items-center text-gray-700"><span className="inline-flex w-5 h-5 mr-2"><CheckIcon /></span>Workforce Analytics</li>
+                    <li className="flex items-center text-gray-700"><span className="inline-flex w-5 h-5 mr-2"><CheckIcon /></span>Local Business Hours Support</li>
                   </ul>
                 </div>
                 <div className="flex justify-start">

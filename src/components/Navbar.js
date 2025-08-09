@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import ZHighResolutionLogo from '../assets/Logo.png';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,7 +15,7 @@ const Navbar = () => {
           <div className="flex items-center">
             <img
               className="w-[70px] h-auto"
-              src={ZHighResolutionLogo}
+              src="/ZetScore_Icon.png"
               alt="Company Logo"
             />
           </div>
@@ -30,6 +29,9 @@ const Navbar = () => {
             </Link>
             <Link to="/pricing" className="text-xl font-bold">
               PRICING
+            </Link>
+            <Link to="/contact-us" className="text-xl font-bold">
+              CONTACT US
             </Link>
             <a href="https://forms.zohopublic.com/evolvizsoftwaresgroup/form/ZetScoreDemoRequest/formperma/Q7VIFiPZauUdJviXd8JnvwE8T27rF2wzbLvFBTWh4Vs">
               <button className="px-6 py-2 font-bold text-white transition duration-300 rounded-lg bg-custom-green hover:bg-opacity-90">
@@ -74,6 +76,9 @@ const Navbar = () => {
           </Link>
           <Link to="/pricing" className="block text-xl font-bold" onClick={toggleMenu}>
             PRICING
+          </Link>
+          <Link to="/contact-us" className="block text-xl font-bold" onClick={toggleMenu}>
+            CONTACT US
           </Link>
           <a
             href="https://forms.zohopublic.com/evolvizsoftwaresgroup/form/ZetScoreDemoRequest/formperma/Q7VIFiPZauUdJviXd8JnvwE8T27rF2wzbLvFBTWh4Vs"
