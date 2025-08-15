@@ -15,7 +15,7 @@ function Hero() {
   className="flex justify-start"
 >
   <button className="px-6 py-3 mb-8 font-bold transition duration-300 bg-white border-2 border-transparent rounded-lg font-primary text-custom-green hover:bg-custom-green hover:text-white hover:border-white">
-    JOIN PRIORITY LIST
+    GET STARTED
   </button>
 </a>
 

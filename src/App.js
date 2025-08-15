@@ -7,6 +7,12 @@ import Pricing from './components/Pricing';
 import WhyUs from "./components/WhyUs";
 import FAQSection from "./components/FAQSection";
 import ContactUsPage from "./components/ContactUsPage";
+import FaqPage from "./components/FaqPage";
+import CustomerSupport from "./components/CustomerSuport";
+import Articles from "./components/articles/Articles";
+import BlogPost from "./components/articles/BlogPost";
+import EventsandWebinars from "./components/EventsandWebinars";
+import DemoSection from "./components/DemoSection";
 
 const App = () => {
   return (
@@ -18,12 +24,18 @@ const App = () => {
             <>
               <Hero />
               <WhyUs />
+              <DemoSection />
               <KeyFeatures />
               <FAQSection />
             </>
           } />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/contact-us" element={<ContactUsPage />} />
+          <Route path="/faq" element={<FaqPage />} />
+          <Route path="/customer-support" element={<CustomerSupport />} />
+          <Route path="/articles" element={<Articles />} />
+        <Route path="/articles/:id" element={<BlogPost />} />
+        <Route path= "/events-and-webinars" element={<EventsandWebinars />} />
         </Routes>
         <Footer />
       </div>

@@ -1,0 +1,56 @@
+[
+{
+  "id": "zetscore-performance-management",
+  "category": "EMPLOYEE PERFORMANCE",
+  "title": "Driving Employee Success with ZetScore’s Data-Driven Performance Platform",
+  "description": "ZetScore empowers businesses with a comprehensive platform to enhance employee performance, engagement, and wellbeing. From constructive peer reviews to actionable analytics, discover how ZetScore transforms workforce management.",
+  "author": "ZetScore Team",
+  "date": "August 15, 2025",
+  "image": "/person-working-html-computer.jpg",
+  "readingTime": "6 min read",
+  "overview": "ZetScore is a cutting-edge performance management platform designed to streamline employee evaluations, foster personal development, and provide data-driven insights. Tailored for businesses of all sizes, it supports a holistic approach to workforce management by focusing on growth, wellbeing, and engagement.",
+  "keyBenefits": [
+    "Constructive peer reviews highlight strengths and offer actionable improvement suggestions.",
+    "Comprehensive assessments ensure fair and objective performance evaluations.",
+    "Advanced workforce analytics deliver insights to boost productivity and inform decisions.",
+    "Dedicated wellbeing features promote a supportive and healthy work environment."
+  ],
+  "challengesSolved": "Traditional performance management often lacks objectivity and fails to address employee wellbeing. ZetScore tackles these challenges with structured feedback mechanisms, fair assessment tools, and a focus on holistic employee growth, enabling businesses to optimize performance and foster a positive workplace culture."
+},
+{
+  "id": "zetscore-employee-wellbeing",
+  "category": "EMPLOYEE WELLBEING",
+  "title": "Fostering a Thriving Workplace with ZetScore’s Employee Wellbeing Focus",
+  "description": "ZetScore goes beyond performance metrics to prioritize employee wellbeing, creating a holistic work environment that boosts satisfaction and productivity. Learn how its innovative tools support health, financial stability, and workplace connections.",
+  "author": "ZetScore Team",
+  "date": "August 15, 2025",
+  "image": "/women-holding-hands-close-up.jpg",
+  "readingTime": "5 min read",
+  "overview": "ZetScore redefines performance management by placing employee wellbeing at its core. With features designed to support mental health, financial wellbeing, and social connections, ZetScore helps businesses cultivate a supportive workplace that drives engagement and retention.",
+  "keyBenefits": [
+    "Holistic wellbeing features address health, job satisfaction, and financial stability.",
+    "Tools to foster social connections strengthen team dynamics and collaboration.",
+    "Data-driven insights help tailor wellbeing initiatives to employee needs.",
+    "Integration with performance tools ensures a balanced approach to growth."
+  ],
+  "challengesSolved": "Many organizations struggle to balance performance goals with employee wellbeing, leading to burnout and turnover. ZetScore addresses this by integrating wellbeing-focused tools into its platform, enabling businesses to support their employees’ mental and physical health while maintaining productivity."
+},
+{
+  "id": "zetscore-analytics-driven-growth",
+  "category": "WORKFORCE ANALYTICS",
+  "title": "Unlocking Business Success with ZetScore’s Workforce Analytics",
+  "description": "ZetScore’s Workforce Analytics empowers leaders with data-driven insights to optimize employee performance and drive business growth. Explore how its robust analytics transform decision-making and productivity.",
+  "author": "ZetScore Team",
+  "date": "August 15, 2025",
+  "image": "/people-analyzing-company-financial-reports-.jpg",
+  "readingTime": "7 min read",
+  "overview": "ZetScore’s Workforce Analytics provides businesses with powerful tools to evaluate employee performance, enhance productivity, and make informed decisions. By leveraging real-time data and tailored development plans, ZetScore helps organizations unlock their workforce’s full potential.",
+  "keyBenefits": [
+    "Real-time dashboards provide actionable insights into employee performance.",
+    "Customized development plans boost productivity and career growth.",
+    "Integration with eNPS and cNPS metrics gauges engagement and satisfaction.",
+    "Empowers executives to make strategic, data-driven decisions."
+  ],
+  "challengesSolved": "Businesses often lack clear insights into workforce performance, leading to missed opportunities for growth. ZetScore’s Workforce Analytics solves this by offering comprehensive dashboards, engagement metrics, and personalized plans, enabling leaders to optimize strategies and achieve business success."
+}
+]
