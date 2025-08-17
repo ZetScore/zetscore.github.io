@@ -10,7 +10,7 @@ const CustomerSupport = () => {
       email: 'support.training@zetscore.com',
     },
     {
-      name: 'Services',
+      name: 'Service',
       email: 'support@zetscore.com',
     },
   ];

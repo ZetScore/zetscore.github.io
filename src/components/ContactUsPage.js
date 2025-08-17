@@ -109,11 +109,12 @@ const ContactUsPage = () => {
                         required
                       >
                         <option value="" disabled selected className="text-gray-500">Country*</option>
-                        <option value="Cameroon">Cameroon</option>
                         <option value="Kenya">Kenya</option>
-                        <option value="Gabon">Gabon</option>
-                        <option value="Tchad">Tchad</option>
-                        <option value="Republic of Congo">Republic of Congo</option>
+                        <option value="Ghana">Ghana</option>
+                        <option value="Rwanda">Rwanda</option>
+                        <option value="Bostwana">Bostwana</option>
+                        <option value="Namibia">Namibia</option>
+                        <option value="Cameroon">Cameroon</option>
                       </select>
                     </div>
                     {/* Job Level (Dropdown) */}
@@ -142,8 +143,8 @@ const ContactUsPage = () => {
                         required
                       >
                         <option value="" disabled selected className="text-gray-500">Functional Role*</option>
-                        <option value="finance">Finance and Accounting</option>
                         <option value="hr">Human Resource</option>
+                        <option value="finance">Finance Management</option>
                         <option value="operator">Operator</option>
                         <option value="it">IT</option>
                       </select>

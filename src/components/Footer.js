@@ -72,7 +72,7 @@ const Footer = () => {
         <div className="container items-center px-2 mx-auto space-y-4 text-center max-w-7xl md:flex-row md:space-y-0">
           <div className="items-center space-y-2 sm:flex-row sm:space-y-0 sm:space-x-4">
             <span>
-              <p>© {new Date().getFullYear()} All rights reserved.</p>
+              <p>Copyright © {new Date().getFullYear()} Evolv IZSoftwares Group Ltd. All rights reserved.</p>
             </span>
           </div>
         </div>
