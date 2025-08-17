@@ -1,0 +1,26 @@
+[
+  {
+    "date": {
+      "month": "AUGUST",
+      "day": "4"
+    },
+    "type": "Webinar",
+    "title": "ZetScore Virtual Showcase",
+    "description": "Our ZetScore Live Demonstration event offers an in-depth look into a comprehensive suite of services designed to revolutionize cash collections. You will explore how ZetScore empowers organizations with Client Management, Collector Management, Branch Setup, and Mobile Collection capabilities. Witness firsthand how our Booklet System, Transaction History, Reports & Analytics, and robust User Access & Roles enhance efficiency and streamline operations. Additionally, discover the benefits of SMS Notifications and seamless Daily Synchronization. Don’t miss this opportunity to see how ZetScore can transform your approach to cash collection and management.",
+    "dateTime": "MONDAY, August, 4, 2025, AT GMT+1",
+    "time": "10:00AM TO 11:00AM",
+    "link": "#"
+  },
+  {
+    "date": {
+      "month": "OCTOBER",
+      "day": "6"
+    },
+    "type": "In Person",
+    "title": "Annual Tech Innovation Summit",
+    "description": "Join industry leaders and innovators at the Annual Tech Innovation Summit to discuss the latest trends in technology, digital transformation, and future-proof strategies. Featuring keynote speakers, interactive workshops, and networking opportunities.",
+    "dateTime": "MONDAY, OCTOBER, 6, 2025, AT GMT+1",
+    "time": "09:00AM TO 05:00PM",
+    "link": "#"
+  }
+]

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import ZHighResolutionLogo from '../assets/Logo.png';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,32 +9,35 @@ const Navbar = () => {
   };
 
   return (
-    <div className="sticky top-0 z-50 bg-white text-custom-green shadow-xl text-justify inter-character">
-      <div className="mx-auto px-2 py-2 grid grid-cols-12 items-center">
-        <div className="col-span-10 col-start-2 grid grid-cols-2 md:grid-cols-2 items-center">
+    <div className="sticky top-0 z-50 text-justify bg-white shadow-xl text-custom-green inter-character">
+      <div className="grid items-center grid-cols-12 px-2 py-2 mx-auto">
+        <div className="grid items-center grid-cols-2 col-span-10 col-start-2 md:grid-cols-2">
           <div className="flex items-center">
             <img
               className="w-[70px] h-auto"
-              src={ZHighResolutionLogo}
+              src="/ZetScore_Icon.png"
               alt="Company Logo"
             />
           </div>
 
-          <div className="hidden md:flex justify-center md:justify-end items-center space-x-8 font-primary">
-            <a href="#home" className="text-xl font-bold">
+          <div className="items-center justify-center hidden space-x-8 md:flex md:justify-end font-primary">
+            <Link to="/" className="text-xl font-bold">
               HOME
-            </a>
-            <a href="#features" className="text-xl font-bold">
+            </Link>
+            <Link to="#features" className="text-xl font-bold">
               FEATURES
-            </a>
+            </Link>
+            <Link to="/pricing" className="text-xl font-bold">
+              PRICING
+            </Link>
             <a href="https://forms.zohopublic.com/evolvizsoftwaresgroup/form/ZetScoreDemoRequest/formperma/Q7VIFiPZauUdJviXd8JnvwE8T27rF2wzbLvFBTWh4Vs">
-              <button className="bg-custom-green text-white font-bold px-6 py-2 rounded-lg hover:bg-opacity-90 transition duration-300">
+              <button className="px-6 py-2 font-bold text-white transition duration-300 rounded-lg bg-custom-green hover:bg-opacity-90">
                 JOIN PRIORITY LIST
               </button>
             </a>
           </div>
 
-          <div className="md:hidden flex justify-end">
+          <div className="flex justify-end md:hidden">
             <button
               onClick={toggleMenu}
               className="text-custom-green focus:outline-none"
@@ -56,24 +59,26 @@ const Navbar = () => {
         </div>
       </div>
 
-     
       <div
         className={`fixed top-0 right-0 h-full bg-white bg-opacity-90 shadow-lg transition-transform duration-300 ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         } w-1/2 md:w-1/2`}
       >
-        <div className="flex flex-col items-center justify-center space-y-6 py-8">
-          <a href="#home" className="block text-xl font-bold">
+        <div className="flex flex-col items-center justify-center py-8 space-y-6">
+          <Link to="/" className="block text-xl font-bold" onClick={toggleMenu}>
             HOME
-          </a>
-          <a href="#features" className="block text-xl font-bold">
+          </Link>
+          <Link to="#features" className="block text-xl font-bold" onClick={toggleMenu}>
             FEATURES
-          </a>
+          </Link>
+          <Link to="/pricing" className="block text-xl font-bold" onClick={toggleMenu}>
+            PRICING
+          </Link>
           <a
             href="https://forms.zohopublic.com/evolvizsoftwaresgroup/form/ZetScoreDemoRequest/formperma/Q7VIFiPZauUdJviXd8JnvwE8T27rF2wzbLvFBTWh4Vs"
             className="block"
           >
-            <button className="bg-custom-green text-white font-bold px-6 py-2 rounded-lg hover:bg-opacity-90 transition duration-300">
+            <button className="px-6 py-2 font-bold text-white transition duration-300 rounded-lg bg-custom-green hover:bg-opacity-90">
               JOIN PRIORITY LIST
             </button>
           </a>
