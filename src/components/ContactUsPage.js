@@ -8,6 +8,9 @@ const API_CONFIG = {
   MAX_RETRIES: 2
 };
 
+// Email validation regex pattern
+const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
 // Modal notification component
 const Modal = ({ message, type, onClose }) => {
   const bgColor = type === 'success' ? 'bg-custom-green' : 'bg-red-500';
@@ -49,6 +52,7 @@ const ContactUsPage = () => {
     help_needed: '',
     opt_in: false
   });
+  const [errors, setErrors] = useState({});
 
   const gradientClasses = 'bg-custom-green';
   const buttonColor = 'bg-custom-green';
@@ -56,6 +60,20 @@ const ContactUsPage = () => {
   const microservices = [
     { country: 'Kenya', name: 'KRA', img: 'kra-logo.png' },
   ];
+
+  // Countries with Kenya first, then alphabetical order
+  const countries = [
+    { value: 'Kenya', label: 'Kenya' },
+    { value: 'Botswana', label: 'Botswana' },
+    { value: 'Ghana', label: 'Ghana' },
+    { value: 'Namibia', label: 'Namibia' },
+    { value: 'Rwanda', label: 'Rwanda' }
+  ].sort((a, b) => {
+    // Keep Kenya first, then sort the rest alphabetically
+    if (a.value === 'Kenya') return -1;
+    if (b.value === 'Kenya') return 1;
+    return a.value.localeCompare(b.value);
+  });
 
   const showModal = (message, type = 'success') => {
     setModal({ message, type });
@@ -65,12 +83,48 @@ const ContactUsPage = () => {
     setModal(null);
   };
 
+  const validateForm = () => {
+    const newErrors = {};
+
+    // Email validation
+    if (formData.email && !EMAIL_REGEX.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+    }
+
+    // Phone number validation (only numbers)
+    if (formData.work_phone && !/^\d+$/.test(formData.work_phone)) {
+      newErrors.work_phone = 'Phone number should contain only numbers';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleInputChange = (e) => {
     const { id, value, type, checked } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [id]: type === 'checkbox' ? checked : value
-    }));
+    
+    // For phone number input, only allow numbers
+    if (id === 'work_phone') {
+      // Remove any non-digit characters
+      const numbersOnly = value.replace(/\D/g, '');
+      setFormData(prev => ({
+        ...prev,
+        [id]: numbersOnly
+      }));
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [id]: type === 'checkbox' ? checked : value
+      }));
+    }
+
+    // Clear error when user starts typing
+    if (errors[id]) {
+      setErrors(prev => ({
+        ...prev,
+        [id]: ''
+      }));
+    }
   };
 
   const submitToAPI = async (data, retryCount = 0) => {
@@ -121,6 +175,13 @@ const ContactUsPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Validate form before submission
+    if (!validateForm()) {
+      showModal('Please check your form for errors.', 'error');
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -143,6 +204,9 @@ const ContactUsPage = () => {
         help_needed: '',
         opt_in: false
       });
+
+      // Clear errors
+      setErrors({});
 
       // Background API call
       await submitToAPI(formDataToSubmit);
@@ -233,9 +297,14 @@ const ContactUsPage = () => {
                         value={formData.email}
                         onChange={handleInputChange}
                         placeholder="Business Email*"
-                        className="w-full px-4 py-3 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent"
+                        className={`w-full px-4 py-3 text-gray-900 placeholder-gray-500 border rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent ${
+                          errors.email ? 'border-red-500' : 'border-gray-300'
+                        }`}
                         required
                       />
+                      {errors.email && (
+                        <p className="mt-1 text-sm text-red-500">{errors.email}</p>
+                      )}
                     </div>
 
                     {/* Job title */}
@@ -261,9 +330,14 @@ const ContactUsPage = () => {
                         value={formData.work_phone}
                         onChange={handleInputChange}
                         placeholder="Work Phone*"
-                        className="w-full px-4 py-3 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent"
+                        className={`w-full px-4 py-3 text-gray-900 placeholder-gray-500 border rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent ${
+                          errors.work_phone ? 'border-red-500' : 'border-gray-300'
+                        }`}
                         required
                       />
+                      {errors.work_phone && (
+                        <p className="mt-1 text-sm text-red-500">{errors.work_phone}</p>
+                      )}
                     </div>
 
                     {/* Company */}
@@ -291,11 +365,11 @@ const ContactUsPage = () => {
                         required
                       >
                         <option value="" disabled className="text-gray-500">Country*</option>
-                        <option value="Cameroon">Cameroon</option>
-                        <option value="Kenya">Kenya</option>
-                        <option value="Gabon">Gabon</option>
-                        <option value="Tchad">Tchad</option>
-                        <option value="Republic of Congo">Republic of Congo</option>
+                        {countries.map((country) => (
+                          <option key={country.value} value={country.value}>
+                            {country.label}
+                          </option>
+                        ))}
                       </select>
                     </div>
                     
