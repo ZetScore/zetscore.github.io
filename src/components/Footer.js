@@ -19,7 +19,7 @@ const Footer = () => {
             </div>
             
             <div className="flex items-center mt-4 transition duration-300 text-primary hover:text-secondary">
-              <Link to="/contact-page" className="mr-2 text-base font-semibold">
+              <Link to="/contact-us" className="mr-2 text-base font-semibold">
                 Contact Us
               </Link>
               <svg className="w-6 h-6 transform rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

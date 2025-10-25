@@ -25,13 +25,13 @@ const FAQSection = () => {
                 className="flex items-center justify-between w-full p-6 text-left focus:outline-none"
                 onClick={() => toggleFAQ(index)}
               >
-                <span className="text-lg font-semibold text-black">{faq.question}</span>
+                <span className="text-lg font-semibold text-white">{faq.question}</span>
                 <span className="text-2xl text-white">
                   {openIndex === index ? '-' : '+'}
                 </span>
               </button>
               {openIndex === index && (
-                <div className="px-6 pt-2 pb-6 text-black">
+                <div className="px-6 pt-2 pb-6 text-white">
                   {faq.answer}
                 </div>
               )}

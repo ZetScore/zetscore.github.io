@@ -22,8 +22,8 @@ const WhyUs = () => {
           <h2 className="mb-12 text-3xl font-bold text-center text-gray-800 md:text-4xl">
             WHY ZETSCORE
           </h2>
-          <p className="mb-12 text-lg text-center text-gray-600 max-w-[600px] mx-auto">
-            Discover what sets ZetScore apart in delivering exceptional value to our clients.
+          <p className="mb-12 text-lg text-center text-gray-600 max-w-[700px] mx-auto">
+            Experience how ZetScore redefines value — Turning data into performance that drives <span className="text-custom-green font-bold"> Measurable Growth.</span>
           </p>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {reasonsData.map((reason, index) => (
