@@ -1,0 +1,61 @@
+[
+  {
+    "id": "onboarding",
+    "icon": "fluent-mdl2:contact-info",
+    "title": "Onboarding",
+    "description": "Streamline the welcome process with digital forms, automated task assignment, and resource distribution for a great first impression.",
+    "fullDescription": "Our comprehensive Onboarding module guides new hires through all necessary steps, from signing critical documents to training access. It uses automated workflows to ensure compliance and provides a personalized, seamless experience for every employee from day one.",
+    "image": "/Onboarding.jpg",
+    "author": "ZetScore Team",
+    "date": "2024-01-15",
+    "readingTime": "5 min read",
+    "overview": "Our onboarding solution transforms the traditional employee welcome process into a seamless digital experience that sets the tone for long-term success and engagement.",
+    "keyBenefits": [
+      "Personalized welcome experiences for each role",
+      "Streamlined compliance with regulatory requirements",
+      "Reduced administrative overhead by 60%",
+      "Improved new hire retention rates"
+    ],
+    "challengesSolved": "We address the common pain points of manual onboarding processes, including paperwork delays, inconsistent experiences, compliance risks, and poor new hire integration that often leads to early turnover."
+  },
+  {
+    "id": "background-checks",
+    "icon": "fluent-mdl2:compliance-audit",
+    "title": "Background Checks",
+    "description": "Quickly and securely initiate and track candidate background checks, ensuring regulatory compliance and informed hiring decisions.",
+    "fullDescription": "Integrate with third-party providers to securely manage the entire background check lifecycle. Our platform provides real-time status updates, handles necessary disclosures, and maintains an auditable trail of all verification steps taken during the hiring process.",
+    "image": "/backgroundcheck.jpg",
+    "author": "ZetScore Team",
+    "date": "2024-01-15",
+    "readingTime": "4 min read",
+    "overview": "Our background check system ensures thorough candidate verification while maintaining compliance and efficiency throughout the hiring process.",
+    "keyBenefits": [
+      "Integration with leading verification providers",
+      "Real-time status tracking and notifications",
+      "Comprehensive audit trails for compliance",
+      "Secure document handling and storage",
+      "Streamlined candidate experience"
+    ],
+    "challengesSolved": "We eliminate the complexity and compliance risks associated with manual background verification processes, providing a secure, efficient system that protects both the organization and candidates."
+  },
+  {
+    "id": "work-authorization",
+    "icon": "fluent-mdl2:document-management",
+    "title": "Work Authorization",
+    "description": "Manage and track employee visa and work permit expiration dates to maintain continuous compliance with immigration laws.",
+    "fullDescription": "This feature helps organizations maintain legal compliance by centralizing documentation related to employee work status, including I-9 forms and visa management. Automated alerts notify managers and HR of upcoming expiration dates, preventing potential legal issues and gaps in authorization and protecting the business.",
+    "image": "/WorkAuthorization.jpg",
+    "author": "ZetScore Team",
+    "date": "2024-01-15",
+    "readingTime": "6 min read",
+    "overview": "Our work authorization management system ensures continuous compliance with immigration laws through proactive tracking and automated notifications.",
+    "keyBenefits": [
+      "Centralized document management for I-9 and visa forms",
+      "Automated expiration date alerts and reminders",
+      "Compliance reporting and audit readiness",
+      "Multi-level notification system",
+      "Integration with HR systems"
+    ],
+    "challengesSolved": "We solve the critical challenge of maintaining work authorization compliance in organizations with diverse workforce, preventing legal issues and ensuring business continuity."
+  }
+]
