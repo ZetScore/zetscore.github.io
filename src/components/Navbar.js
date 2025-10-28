@@ -24,7 +24,7 @@ const Navbar = () => {
             <Link to="/" className="text-xl font-bold">
               HOME
             </Link>
-            <Link to="#features" className="text-xl font-bold">
+            <Link to="/features" className="text-xl font-bold">
               FEATURES
             </Link>
             <Link to="/pricing" className="text-xl font-bold">
@@ -68,7 +68,7 @@ const Navbar = () => {
           <Link to="/" className="block text-xl font-bold" onClick={toggleMenu}>
             HOME
           </Link>
-          <Link to="#features" className="block text-xl font-bold" onClick={toggleMenu}>
+          <Link to="/features" className="block text-xl font-bold" onClick={toggleMenu}>
             FEATURES
           </Link>
           <Link to="/pricing" className="block text-xl font-bold" onClick={toggleMenu}>
