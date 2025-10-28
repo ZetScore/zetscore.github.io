@@ -1,7 +1,7 @@
 [
   {
     "id": "onboarding",
-    "icon": "fluent-mdl2:contact-info",
+    "icon": "material-symbols:jamboard-kiosk-outline",
     "title": "Onboarding",
     "description": "Streamline the welcome process with digital forms, automated task assignment, and resource distribution for a great first impression.",
     "fullDescription": "Our comprehensive Onboarding module guides new hires through all necessary steps, from signing critical documents to training access. It uses automated workflows to ensure compliance and provides a personalized, seamless experience for every employee from day one.",
@@ -40,7 +40,7 @@
   },
   {
     "id": "work-authorization",
-    "icon": "fluent-mdl2:document-management",
+    "icon": "fluent-mdl2:open-enrollment",
     "title": "Work Authorization",
     "description": "Manage and track employee visa and work permit expiration dates to maintain continuous compliance with immigration laws.",
     "fullDescription": "This feature helps organizations maintain legal compliance by centralizing documentation related to employee work status, including I-9 forms and visa management. Automated alerts notify managers and HR of upcoming expiration dates, preventing potential legal issues and gaps in authorization and protecting the business.",

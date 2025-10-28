@@ -1,6 +1,6 @@
-import { useParams, Link } from 'react-router-dom';
-import WhatSetsUsApartData from '../../data/WhatSetsUsApart.json';
-import { Icon } from '@iconify/react';
+import { useParams, Link } from "react-router-dom";
+import WhatSetsUsApartData from "../../data/WhatSetsUsApart.json";
+import { Icon } from "@iconify/react";
 
 const WhatSetsUsApartDetail = () => {
   const { id } = useParams();
@@ -13,9 +13,11 @@ const WhatSetsUsApartDetail = () => {
     return (
       <div className="flex items-center justify-center min-h-screen bg-white">
         <div className="text-center">
-          <h2 className="mb-4 text-2xl font-bold text-gray-900">Feature Not Found</h2>
+          <h2 className="mb-4 text-2xl font-bold text-gray-900">
+            Feature Not Found
+          </h2>
           <Link
-            to="/what-sets-us-apart"
+            to="/enhanced-features"
             className="inline-flex items-center font-semibold text-custom-green hover:text-teal-700 focus:outline-none"
           >
             Back to Features
@@ -78,7 +80,9 @@ const WhatSetsUsApartDetail = () => {
               <h2 className="mb-4 text-2xl font-bold text-gray-900">
                 Overview
               </h2>
-              <p className="leading-relaxed text-gray-700">{feature.overview}</p>
+              <p className="leading-relaxed text-gray-700">
+                {feature.overview}
+              </p>
             </div>
 
             {/* Full Description */}
@@ -86,7 +90,9 @@ const WhatSetsUsApartDetail = () => {
               <h2 className="mb-4 text-2xl font-bold text-gray-900">
                 Detailed Description
               </h2>
-              <p className="leading-relaxed text-gray-700">{feature.fullDescription}</p>
+              <p className="leading-relaxed text-gray-700">
+                {feature.fullDescription}
+              </p>
             </div>
 
             {/* Key Benefits */}
@@ -106,14 +112,16 @@ const WhatSetsUsApartDetail = () => {
               <h2 className="mb-4 text-2xl font-bold text-gray-900">
                 Challenges We Solve
               </h2>
-              <p className="leading-relaxed text-gray-700">{feature.challengesSolved}</p>
+              <p className="leading-relaxed text-gray-700">
+                {feature.challengesSolved}
+              </p>
             </div>
           </div>
 
           {/* Back to Features Link */}
           <div className="mt-8">
             <Link
-              to="/what-sets-us-apart"
+              to="/enhanced-features-section"
               className="inline-flex items-center font-semibold text-custom-green hover:text-teal-700 focus:outline-none"
             >
               ← Back to What Sets Us Apart

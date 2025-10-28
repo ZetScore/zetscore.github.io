@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react';
 
 const WhatSetsUsApart = () => {
   return (
-    <section className="py-16 bg-white">
+    <section id="enhanced-features" className="py-16 bg-white">
       <div className="grid items-center grid-cols-12 px-4 mx-auto">
         <div className="flex flex-col items-center col-span-10 col-start-2">
           <h2 className="mb-12 text-3xl font-bold text-center text-gray-800 md:text-4xl">
@@ -27,7 +27,7 @@ const WhatSetsUsApart = () => {
                 </h3>
                 <p className="mb-6 text-justify text-gray-600">{reason.description}</p>
                 <Link
-                  to={`/what-sets-us-apart/${reason.id}`}
+                  to={`/enhanced-features/${reason.id}`}
                   className="font-medium transition-colors duration-200 text-custom-green hover:text-teal-700 focus:outline-none"
                 >
                   Read more

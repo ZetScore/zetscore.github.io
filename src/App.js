@@ -54,6 +54,29 @@ const FeaturesPage = () => {
   );
 };
 
+// What Sets Us Apart page component - shows homepage but scrolls to what sets us apart
+const WhatSetsUsApartScroll = () => {
+  useEffect(() => {
+    setTimeout(() => {
+      const section = document.getElementById('enhanced-features');
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  }, []);
+
+  return (
+    <>
+      <Hero />
+      <WhyUs />
+      <DemoSection />
+      <KeyFeatures />
+      <WhatSetsUsApart />
+      <FAQSection />
+    </>
+  );
+};
+
 const App = () => {
   return (
     <Router>
@@ -62,8 +85,9 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/features" element={<FeaturesPage />} />
-          <Route path="/what-sets-us-apart" element={<WhatSetsUsApart />} />
-          <Route path="/what-sets-us-apart/:id" element={<WhatSetsUsApartDetail />} />
+          <Route path="/enhanced-features" element={<WhatSetsUsApart />} />
+          <Route path="/enhanced-features-section" element={<WhatSetsUsApartScroll />} />
+          <Route path="/enhanced-features/:id" element={<WhatSetsUsApartDetail />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/contact-us" element={<ContactUsPage />} />
           <Route path="/faq" element={<FaqPage />} />
