@@ -1,0 +1,36 @@
+{
+  "general": [
+    {
+      "question": "What is ZetScore?",
+      "answer": "ZetScore is an employee performance management platform that helps organizations track, assess, develop, and improve employee performance with data-driven insights."
+    },
+    {
+      "question": "How does the Onboarding feature work?",
+      "answer": "Onboarding guides new hires through digital document signing, work authorization verification, background checks, profile setup, and a manager-defined first-day plan — all in one seamless flow."
+    }
+  ],
+  "freePlan": [
+    {
+      "question": "What is included in the Free Plan?",
+      "answer": "The Free Plan offers basic access to core features like Peer Review, Assessment, and Personal Development for small teams or trial use. Advanced modules are limited or unavailable."
+    },
+    {
+      "question": "Can I use Onboarding or Background Check in the Free Plan?",
+      "answer": "No, Onboarding is included in Business, while Background Check and Work Authorisation are Enterprise-only features."
+    }
+  ],
+  "paidPlan": [
+    {
+      "question": "What’s the main difference between Business and Enterprise plans?",
+      "answer": "Business gives you core performance tools + Onboarding. Enterprise unlocks advanced analytics, eNPS, Employee Wellbeing, Background Checks, Work Authorisation, unlimited storage, and 24/7 support."
+    },
+    {
+      "question": "How do I upgrade my plan?",
+      "answer": "Log in to your dashboard, go to Billing/Settings, and select the desired plan. Upgrades are immediate; contact support if you need custom Enterprise pricing."
+    },
+    {
+      "question": "Are Background Check and Work Authorisation available in Business?",
+      "answer": "No — these compliance-critical features are exclusive to the Enterprise plan to ensure proper verification processes and legal safeguards."
+    }
+  ]
+}

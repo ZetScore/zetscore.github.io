@@ -3,59 +3,60 @@
     "id": "onboarding",
     "icon": "material-symbols:jamboard-kiosk-outline",
     "title": "Onboarding",
-    "description": "Streamline the welcome process with digital forms, automated task assignment, and resource distribution for a great first impression.",
-    "fullDescription": "Our comprehensive Onboarding module guides new hires through all necessary steps, from signing critical documents to training access. It uses automated workflows to ensure compliance and provides a personalized, seamless experience for every employee from day one.",
+    "description": "Guide new hires through a complete digital onboarding journey including compliance checks, document signing, profile setup, and first-day planning for a smooth start.",
+    "fullDescription": "ZetScore's Onboarding module handles the entire new employee welcome process in one place. It includes work authorization verification, manager-assigned documents for viewing, acknowledging, or signing, background check initiation, employee bio and profile picture updates, additional personal information questions to help managers understand their team better, and a customizable first-day itinerary sent directly by the manager. Everything is digital, trackable, and designed to make the transition fast and professional.",
     "image": "/Onboarding.jpg",
     "author": "ZetScore Team",
-    "date": "2024-01-15",
+    "date": "2025-07-15",
     "readingTime": "5 min read",
-    "overview": "Our onboarding solution transforms the traditional employee welcome process into a seamless digital experience that sets the tone for long-term success and engagement.",
+    "overview": "Transform your new hire experience from paperwork chaos to a structured, digital flow that covers everything from legal compliance to personal introductions and day-one readiness.",
     "keyBenefits": [
-      "Personalized welcome experiences for each role",
-      "Streamlined compliance with regulatory requirements",
-      "Reduced administrative overhead by 60%",
-      "Improved new hire retention rates"
+      "Everything in one digital platform no scattered emails or paper",
+      "Manager involvement for personalized documents, questions, and first-day plans",
+      "Quick compliance with work authorization and background checks",
+      "Better team connection through bio updates and personal info sharing",
+      "Improved new hire confidence and faster productivity"
     ],
-    "challengesSolved": "We address the common pain points of manual onboarding processes, including paperwork delays, inconsistent experiences, compliance risks, and poor new hire integration that often leads to early turnover."
+    "challengesSolved": "We fix the usual onboarding headaches: lost documents, delayed signatures, forgotten compliance steps, generic experiences, and poor first impressions that lead to early turnover or confusion."
   },
   {
     "id": "background-checks",
     "icon": "fluent-mdl2:compliance-audit",
     "title": "Background Checks",
-    "description": "Quickly and securely initiate and track candidate background checks, ensuring regulatory compliance and informed hiring decisions.",
-    "fullDescription": "Integrate with third-party providers to securely manage the entire background check lifecycle. Our platform provides real-time status updates, handles necessary disclosures, and maintains an auditable trail of all verification steps taken during the hiring process.",
+    "description": "Verify candidate education and documents by reaching out to institutions like schools or universities to confirm everything is accurate and legitimate.",
+    "fullDescription": "Our Background Checks feature allows you to initiate and track verification of key documents. We send requests to the relevant institutions (for example, the schools or universities where the candidate studied) to confirm attendance, degrees, certificates, and other claimed qualifications. This ensures all information provided is genuine, helping you make confident hiring decisions while staying compliant.",
     "image": "/backgroundcheck.jpg",
     "author": "ZetScore Team",
-    "date": "2024-01-15",
+    "date": "2025-08-15",
     "readingTime": "4 min read",
-    "overview": "Our background check system ensures thorough candidate verification while maintaining compliance and efficiency throughout the hiring process.",
+    "overview": "Get reliable confirmation of a candidate's educational and professional background through direct institutional verification — simple, secure, and thorough.",
     "keyBenefits": [
-      "Integration with leading verification providers",
-      "Real-time status tracking and notifications",
-      "Comprehensive audit trails for compliance",
-      "Secure document handling and storage",
-      "Streamlined candidate experience"
+      "Direct verification with schools and institutions for accuracy",
+      "Clear status tracking so you know exactly where things stand",
+      "Reduces risk of fake credentials or misrepresentations",
+      "Supports fair and informed hiring decisions",
+      "Keeps the process organized and documented"
     ],
-    "challengesSolved": "We eliminate the complexity and compliance risks associated with manual background verification processes, providing a secure, efficient system that protects both the organization and candidates."
+    "challengesSolved": "We remove the hassle and uncertainty of manual follow-ups, phone calls, and potential fraud by automating institutional checks and providing a clear audit trail."
   },
   {
     "id": "work-authorization",
     "icon": "fluent-mdl2:open-enrollment",
     "title": "Work Authorization",
-    "description": "Manage and track employee visa and work permit expiration dates to maintain continuous compliance with immigration laws.",
-    "fullDescription": "This feature helps organizations maintain legal compliance by centralizing documentation related to employee work status, including I-9 forms and visa management. Automated alerts notify managers and HR of upcoming expiration dates, preventing potential legal issues and gaps in authorization and protecting the business.",
+    "description": "Securely collect and verify work permits, passports, and other documents to confirm new hires are legally eligible to work.",
+    "fullDescription": "With ZetScore Work Authorization, new employees upload their key documents — such as passports, work permits, visas, or other proof of eligibility — directly in the platform. The system allows HR or managers to review and verify these submissions to ensure full compliance with employment laws before onboarding proceeds. It's straightforward, secure, and keeps everything in one place.",
     "image": "/WorkAuthorization.jpg",
     "author": "ZetScore Team",
-    "date": "2024-01-15",
+    "date": "2025-09-15",
     "readingTime": "6 min read",
-    "overview": "Our work authorization management system ensures continuous compliance with immigration laws through proactive tracking and automated notifications.",
+    "overview": "Make sure every new hire is legally cleared to work by handling document submission and verification digitally — fast, compliant, and stress-free.",
     "keyBenefits": [
-      "Centralized document management for I-9 and visa forms",
-      "Automated expiration date alerts and reminders",
-      "Compliance reporting and audit readiness",
-      "Multi-level notification system",
-      "Integration with HR systems"
+      "Easy document upload for employees",
+      "Quick review and approval by managers or HR",
+      "Ensures legal compliance from day one",
+      "Secure storage and easy access for audits",
+      "Prevents delays in starting work due to missing paperwork"
     ],
-    "challengesSolved": "We solve the critical challenge of maintaining work authorization compliance in organizations with diverse workforce, preventing legal issues and ensuring business continuity."
+    "challengesSolved": "We eliminate the back-and-forth of emailing sensitive documents, lost files, and compliance gaps that can delay onboarding or create legal risks for the business."
   }
 ]
