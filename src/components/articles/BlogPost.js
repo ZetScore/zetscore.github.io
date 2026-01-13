@@ -43,7 +43,7 @@ const BlogPost = () => {
           {/* Logo */}
           <div className="flex justify-center mb-6">
             <img
-              src="/ZetScore_Icon.png" // Replace with your logo path
+              src="/ZetScore_Icon.png"
               alt="ZetScore Logo"
               className="w-auto h-16"
             />

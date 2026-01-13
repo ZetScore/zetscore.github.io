@@ -26,7 +26,7 @@ const Articles = () => {
         </div>
 
         {/* Blog Posts Grid */}
-        <div className="grid items-center grid-cols-12 px-2 py-2 mx-auto">
+        <div className="grid items-center grid-cols-12 px-2 py-2 mx-auto lg:mt-16">
           <div className="col-span-10 col-start-2 px-4 sm:px-8 lg:px-15">
             {posts.length === 0 ? (
               <div className="text-center text-gray-600">

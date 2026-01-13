@@ -18,5 +18,13 @@
   {
     "question": "What is Net Promoter Score?",
     "answer": "ZetScore utilizes eNPS (Employee Net Promoter Score) and cNPS (Customer Net Promoter Score) to gauge employee and customer engagement and satisfaction, providing insightful feedback metrics to drive improvements."
+  },
+  {
+    "question": "What is a background check in the hiring process?",
+    "answer": "A background check is a verification step where we confirm the accuracy of the information you provided, such as employment history, education, and criminal records if applicable. This often includes contacting your previous schools or institutions to verify your certificates, degrees, and attendance records to ensure everything is legitimate."
+  },
+  {
+    "question": "What is work authorization verification?",
+    "answer": "Work authorization verification is the process where we confirm you are legally allowed to work. You will be asked to submit documents like your passport, work permit, visa, or other official proof of eligibility. We review these to ensure compliance with employment laws before finalizing your onboarding."
   }
 ]
