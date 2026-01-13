@@ -23,7 +23,7 @@
     "id": "background-checks",
     "icon": "fluent-mdl2:compliance-audit",
     "title": "Background Checks",
-    "description": "Verify candidate education and documents by reaching out to institutions like schools or universities to confirm everything is accurate and legitimate.",
+    "description": "Verify candidate Education, Professional Experience, and documents by reaching out to institutions like schools or universities to confirm everything is accurate and legitimate.",
     "fullDescription": "Our Background Checks feature allows you to initiate and track verification of key documents. We send requests to the relevant institutions (for example, the schools or universities where the candidate studied) to confirm attendance, degrees, certificates, and other claimed qualifications. This ensures all information provided is genuine, helping you make confident hiring decisions while staying compliant.",
     "image": "/backgroundcheck.jpg",
     "author": "ZetScore Team",
@@ -31,13 +31,14 @@
     "readingTime": "4 min read",
     "overview": "Get reliable confirmation of a candidate's educational and professional background through direct institutional verification — simple, secure, and thorough.",
     "keyBenefits": [
-      "Direct verification with schools and institutions for accuracy",
-      "Clear status tracking so you know exactly where things stand",
-      "Reduces risk of fake credentials or misrepresentations",
-      "Supports fair and informed hiring decisions",
+      "Criminal Background Checks",
+      "Verification with University and Institutions for accuracy",
+      "Verification of previous Employment Hostory",
+      "Professional License Verifications",
+      "Professional References verification",
       "Keeps the process organized and documented"
     ],
-    "challengesSolved": "We remove the hassle and uncertainty of manual follow-ups, phone calls, and potential fraud by automating institutional checks and providing a clear audit trail."
+    "challengesSolved": "We remove the hassle and uncertainty of manual follow-ups, phone calls, fake license or educational diplomat and potential fraud by automating institutional checks with our team on the ground and providing a clear audit trail."
   },
   {
     "id": "work-authorization",
