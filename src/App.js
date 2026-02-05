@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; 
 import { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import KeyFeatures from './components/KeyFeatures';
@@ -16,6 +17,7 @@ import EventsandWebinars from "./components/EventsandWebinars";
 import DemoSection from "./components/DemoSection";
 import WhatSetsUsApart from "./components/WhatSetsUsApart/WhatSetsUsApart";
 import WhatSetsUsApartDetail  from "./components/WhatSetsUsApart/WhatSetsUsApartDetail";
+import PreLoginPage from './components/PreLogin';
 
 // Homepage component
 const Homepage = () => {
@@ -77,28 +79,109 @@ const WhatSetsUsApartScroll = () => {
   );
 };
 
+// Layout component with Navbar and Footer
+const Layout = ({ children }) => {
+  return (
+    <div className="relative min-h-screen">
+      <Navbar />
+      {children}
+      <Footer />
+    </div>
+  );
+};
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+// PreLogin Layout without Navbar and Footer (clean page)
+const PreLoginLayout = ({ children }) => {
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {children}
+    </div>
+  );
+};
+
+PreLoginLayout.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 const App = () => {
   return (
     <Router>
-      <div>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/features" element={<FeaturesPage />} />
-          <Route path="/enhanced-features" element={<WhatSetsUsApart />} />
-          <Route path="/enhanced-features-section" element={<WhatSetsUsApartScroll />} />
-          <Route path="/enhanced-features/:id" element={<WhatSetsUsApartDetail />} />
-          <Route path="/pricing" element={<Pricing />} />
-          <Route path="/contact-us" element={<ContactUsPage />} />
-          <Route path="/faq" element={<FaqPage />} />
-          <Route path="/customer-support" element={<CustomerSupport />} />
-          <Route path="/articles" element={<Articles />} />
-          <Route path="/articles/:id" element={<BlogPost />} />
-          <Route path="/events-and-webinars" element={<EventsandWebinars />} />
-        </Routes>
-        <Footer />
-      </div>
+      <Routes>
+        {/* Routes with Navbar and Footer */}
+        <Route path="/" element={
+          <Layout>
+            <Homepage />
+          </Layout>
+        } />
+        <Route path="/features" element={
+          <Layout>
+            <FeaturesPage />
+          </Layout>
+        } />
+        <Route path="/enhanced-features" element={
+          <Layout>
+            <WhatSetsUsApart />
+          </Layout>
+        } />
+        <Route path="/enhanced-features-section" element={
+          <Layout>
+            <WhatSetsUsApartScroll />
+          </Layout>
+        } />
+        <Route path="/enhanced-features/:id" element={
+          <Layout>
+            <WhatSetsUsApartDetail />
+          </Layout>
+        } />
+        <Route path="/pricing" element={
+          <Layout>
+            <Pricing />
+          </Layout>
+        } />
+        <Route path="/contact-us" element={
+          <Layout>
+            <ContactUsPage />
+          </Layout>
+        } />
+        <Route path="/faq" element={
+          <Layout>
+            <FaqPage />
+          </Layout>
+        } />
+        <Route path="/customer-support" element={
+          <Layout>
+            <CustomerSupport />
+          </Layout>
+        } />
+        <Route path="/articles" element={
+          <Layout>
+            <Articles />
+          </Layout>
+        } />
+        <Route path="/articles/:id" element={
+          <Layout>
+            <BlogPost />
+          </Layout>
+        } />
+        <Route path="/events-and-webinars" element={
+          <Layout>
+            <EventsandWebinars />
+          </Layout>
+        } />
+        
+        {/* PreLogin route WITHOUT Navbar and Footer - full page */}
+        <Route path="/login" element={
+          <PreLoginLayout>
+            <PreLoginPage />
+          </PreLoginLayout>
+        } />
+      </Routes>
     </Router>
   );
 };
+
 export default App;

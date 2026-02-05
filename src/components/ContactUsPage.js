@@ -384,10 +384,13 @@ const ContactUsPage = () => {
                         required
                       >
                         <option value="" disabled className="text-gray-500">Job Level*</option>
-                        <option value="c-level">C-Level</option>
-                        <option value="vp">Vice President</option>
+                        <option value="c-level">Executive (President, CEO, COO, CTO, CIO)</option>
+                        <option value="vp">Executive Vice President / Vice President</option>
                         <option value="director">Director</option>
                         <option value="manager">Manager</option>
+                        <option value="hr">Human Resources</option>
+                        <option value="it">IT & Technical Management</option>
+                        <option value="Consultant">Consultant / Specialist</option>
                         <option value="other">Other</option>
                       </select>
                     </div>
