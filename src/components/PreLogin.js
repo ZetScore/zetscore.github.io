@@ -103,8 +103,28 @@ const PreLoginPage = () => {
         border: '1px solid #e8e8e8',
       }}>
 
-        {/* New image attribute at the start with title on the same row */}
-        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }}>
+        {/* Login title at the top */}
+        <h1 style={{
+          color: '#1a1a1a',
+          fontSize: '32px',
+          fontWeight: '700',
+          textAlign: 'center',
+          margin: '0 0 24px',
+          letterSpacing: '-0.5px',
+        }}>
+          Login with ZetScore Security
+        </h1>
+
+        {/* Horizontal line between login and logo/search row */}
+        <hr style={{
+          border: 'none',
+          height: '1px',
+          backgroundColor: '#e8e8e8',
+          margin: '0 0 24px',
+        }} />
+
+        {/* Logo and "Search your org to proceed to secure login" on the same row */}
+        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '28px' }}>
           <img
             src="/applogo.png"
             alt="ZetScore"
@@ -115,35 +135,15 @@ const PreLoginPage = () => {
               marginRight: '16px',
             }}
           />
-          <h1 style={{
-            color: '#1a1a1a',
-            fontSize: '32px',
-            fontWeight: '700',
+          <p style={{
+            color: '#666',
+            fontSize: '20px',
             margin: 0,
-            letterSpacing: '-0.5px',
+            lineHeight: '1.5',
           }}>
-            Login with ZetScore Security
-          </h1>
+            Search your org to proceed to secure login
+          </p>
         </div>
-
-        {/* Horizontal line below the title row */}
-        <hr style={{
-          border: 'none',
-          height: '1px',
-          backgroundColor: '#e8e8e8',
-          margin: '0 0 28px',
-        }} />
-
-        {/* Search message */}
-        <p style={{
-          color: '#666',
-          fontSize: '20px',
-          margin: '0 0 28px',
-          lineHeight: '1.5',
-          textAlign: 'center',
-        }}>
-          Search your org to proceed to secure login
-        </p>
 
         {/* Affiliations Title with exclamation mark icon */}
         <div style={{
