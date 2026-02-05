@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.bff5aece.css",
-    "main.js": "/static/js/main.a957f4a0.js",
+    "main.css": "/static/css/main.c353bbcb.css",
+    "main.js": "/static/js/main.691ad678.js",
     "static/js/488.62f29c13.chunk.js": "/static/js/488.62f29c13.chunk.js",
     "static/media/group-afro-americans-working-together.jpg": "/static/media/group-afro-americans-working-together.6ef09d3be8a0f70da119.jpg",
     "static/media/pesrsonal development plan.png": "/static/media/pesrsonal development plan.9caea78e60eb6acf9bbd.png",
@@ -9,12 +9,12 @@
     "static/media/Assessment.png": "/static/media/Assessment.dfa4e171a586912562da.png",
     "static/media/Employee-Wellbeing-Main.jpg": "/static/media/Employee-Wellbeing-Main.1959b6866dcf4208fe32.jpg",
     "index.html": "/index.html",
-    "main.bff5aece.css.map": "/static/css/main.bff5aece.css.map",
-    "main.a957f4a0.js.map": "/static/js/main.a957f4a0.js.map",
+    "main.c353bbcb.css.map": "/static/css/main.c353bbcb.css.map",
+    "main.691ad678.js.map": "/static/js/main.691ad678.js.map",
     "488.62f29c13.chunk.js.map": "/static/js/488.62f29c13.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bff5aece.css",
-    "static/js/main.a957f4a0.js"
+    "static/css/main.c353bbcb.css",
+    "static/js/main.691ad678.js"
   ]
 }
