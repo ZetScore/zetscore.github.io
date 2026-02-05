@@ -84,8 +84,8 @@ const PreLoginPage = () => {
         src="/ZetScore_Icon.png"
         alt="ZetScore Logo"
         style={{
-          width: '92px',
-          height: '92px',
+          width: '150px',
+          height: '150px',
           objectFit: 'contain',
           marginBottom: '24px',
         }}
@@ -103,29 +103,36 @@ const PreLoginPage = () => {
         border: '1px solid #e8e8e8',
       }}>
 
-        {/* Main Title */}
-        <h1 style={{
-          color: '#1a1a1a',
-          fontSize: '32px',
-          fontWeight: '700',
-          textAlign: 'center',
-          margin: '0 0 8px',
-          letterSpacing: '-0.5px',
-        }}>
-          Login with ZetScore Security
-        </h1>
+        {/* New image attribute at the start with title on the same row */}
+        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }}>
+          <img
+            src="/applogo.png"
+            alt="ZetScore"
+            style={{
+              width: '60px',
+              height: '60px',
+              objectFit: 'contain',
+              marginRight: '16px',
+            }}
+          />
+          <h1 style={{
+            color: '#1a1a1a',
+            fontSize: '32px',
+            fontWeight: '700',
+            margin: 0,
+            letterSpacing: '-0.5px',
+          }}>
+            Login with ZetScore Security
+          </h1>
+        </div>
 
-        {/* Secondary Title */}
-        <h2 style={{
-          color: '#666',
-          fontSize: '18px',
-          fontWeight: '400',
-          textAlign: 'center',
+        {/* Horizontal line below the title row */}
+        <hr style={{
+          border: 'none',
+          height: '1px',
+          backgroundColor: '#e8e8e8',
           margin: '0 0 28px',
-          lineHeight: '1.4',
-        }}>
-          Select your Organization
-        </h2>
+        }} />
 
         {/* Search message */}
         <p style={{
@@ -138,26 +145,38 @@ const PreLoginPage = () => {
           Search your org to proceed to secure login
         </p>
 
-        {/* Affiliations Title */}
+        {/* Affiliations Title with exclamation mark icon */}
         <div style={{
           marginBottom: '12px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
         }}>
           <h3 style={{
             color: '#1a1a1a',
             fontSize: '16px',
             fontWeight: '600',
-            margin: '0 0 8px',
+            margin: '0',
           }}>
             Affiliations
           </h3>
-          <p style={{
-            color: '#666',
-            fontSize: '14px',
-            margin: '0',
-            lineHeight: '1.4',
-          }}>
-            Select your affiliated organization from the list below
-          </p>
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            width="16" 
+            height="16" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="#666" 
+            strokeWidth="2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+            style={{ cursor: 'pointer' }}
+            onClick={() => setShowHelpModal(true)}
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
         </div>
 
         {/* Search + Dropdown wrapper */}
@@ -169,8 +188,8 @@ const PreLoginPage = () => {
               <div style={{
                 width: '100%',
                 boxSizing: 'border-box',
-                padding: '14px 16px 14px 42px',
-                fontSize: '15px',
+                padding: '18px 20px 18px 50px',
+                fontSize: '16px',
                 color: '#1a1a1a',
                 border: '1px solid #e0e0e0',
                 borderRadius: '10px',
@@ -180,6 +199,7 @@ const PreLoginPage = () => {
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 cursor: 'pointer',
+                minHeight: '60px',
               }}
               onClick={() => setShowDropdown(true)}>
                 <div style={{ display: 'flex', alignItems: 'center', flex: 1 }}>
@@ -193,11 +213,11 @@ const PreLoginPage = () => {
                     strokeLinejoin="round"
                     style={{
                       position: 'absolute',
-                      left: '14px',
+                      left: '16px',
                       top: '50%',
                       transform: 'translateY(-50%)',
-                      width: '20px',
-                      height: '20px',
+                      width: '22px',
+                      height: '22px',
                     }}
                   >
                     <circle cx="11" cy="11" r="8" />
@@ -205,27 +225,27 @@ const PreLoginPage = () => {
                   </svg>
                   
                   <div style={{
-                    width: '30px',
-                    height: '30px',
+                    width: '36px',
+                    height: '36px',
                     borderRadius: '50%',
                     backgroundColor: TEAL,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    marginRight: '12px',
-                    marginLeft: '10px',
+                    marginRight: '14px',
+                    marginLeft: '12px',
                     flexShrink: 0,
                   }}>
-                    <span style={{ fontSize: '14px', fontWeight: '700', color: '#fff' }}>
+                    <span style={{ fontSize: '16px', fontWeight: '700', color: '#fff' }}>
                       {selectedOrg.name.charAt(0).toUpperCase()}
                     </span>
                   </div>
                   
                   <div style={{ flex: 1 }}>
-                    <div style={{ fontSize: '15px', fontWeight: '500', color: '#222' }}>
+                    <div style={{ fontSize: '16px', fontWeight: '500', color: '#222' }}>
                       {selectedOrg.name}
                     </div>
-                    <div style={{ fontSize: '12px', color: '#666', marginTop: '2px' }}>
+                    <div style={{ fontSize: '13px', color: '#666', marginTop: '3px' }}>
                       {selectedOrg.domain}
                     </div>
                   </div>
@@ -242,7 +262,7 @@ const PreLoginPage = () => {
                     border: 'none',
                     color: '#999',
                     cursor: 'pointer',
-                    padding: '4px',
+                    padding: '6px',
                     borderRadius: '4px',
                     display: 'flex',
                     alignItems: 'center',
@@ -251,7 +271,7 @@ const PreLoginPage = () => {
                   onMouseEnter={e => e.currentTarget.style.color = '#666'}
                   onMouseLeave={e => e.currentTarget.style.color = '#999'}
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="18" y1="6" x2="6" y2="18"></line>
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                   </svg>
@@ -269,11 +289,11 @@ const PreLoginPage = () => {
                   strokeLinejoin="round"
                   style={{
                     position: 'absolute',
-                    left: '14px',
+                    left: '16px',
                     top: '50%',
                     transform: 'translateY(-50%)',
-                    width: '20px',
-                    height: '20px',
+                    width: '22px',
+                    height: '22px',
                     pointerEvents: 'none',
                   }}
                 >
@@ -292,20 +312,21 @@ const PreLoginPage = () => {
                     }
                   }}
                   onFocus={() => setShowDropdown(true)}
-                  placeholder="Search for your organization..."
+                  placeholder="Select your affiliated organization from the list below"
                   style={{
                     width: '100%',
                     boxSizing: 'border-box',
-                    paddingLeft: '42px',
-                    paddingRight: '16px',
-                    paddingTop: '14px',
-                    paddingBottom: '14px',
-                    fontSize: '15px',
+                    paddingLeft: '50px',
+                    paddingRight: '20px',
+                    paddingTop: '18px',
+                    paddingBottom: '18px',
+                    fontSize: '16px',
                     color: '#1a1a1a',
                     border: '1px solid #e0e0e0',
                     borderRadius: '10px',
                     outline: 'none',
                     backgroundColor: '#fff',
+                    minHeight: '60px',
                   }}
                 />
               </>
@@ -338,35 +359,36 @@ const PreLoginPage = () => {
                       style={{
                         display: 'flex',
                         alignItems: 'center',
-                        padding: '13px 16px',
+                        padding: '14px 18px',
                         cursor: 'pointer',
                         backgroundColor: isSelected ? '#f5f5f5' : '#fff',
                         borderBottom: idx < filteredOrgs.length - 1 ? '1px solid #f0f0f0' : 'none',
                         transition: 'background-color 0.15s',
+                        minHeight: '64px',
                       }}
                       onMouseEnter={e => { if (!isSelected) e.currentTarget.style.backgroundColor = '#fafafa'; }}
                       onMouseLeave={e => { e.currentTarget.style.backgroundColor = isSelected ? '#f5f5f5' : '#fff'; }}
                     >
                       <div style={{
-                        width: '36px',
-                        height: '36px',
+                        width: '40px',
+                        height: '40px',
                         borderRadius: '50%',
                         backgroundColor: TEAL,
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        marginRight: '14px',
+                        marginRight: '16px',
                         flexShrink: 0,
                       }}>
-                        <span style={{ fontSize: '15px', fontWeight: '700', color: '#fff' }}>
+                        <span style={{ fontSize: '16px', fontWeight: '700', color: '#fff' }}>
                           {org.name.charAt(0).toUpperCase()}
                         </span>
                       </div>
                       <div style={{ flex: 1, minWidth: 0 }}>
-                        <span style={{ fontSize: '15px', fontWeight: '500', color: '#222', display: 'block' }}>
+                        <span style={{ fontSize: '16px', fontWeight: '500', color: '#222', display: 'block' }}>
                           {org.name}
                         </span>
-                        <span style={{ fontSize: '12px', color: '#666', marginTop: '2px' }}>
+                        <span style={{ fontSize: '13px', color: '#666', marginTop: '3px' }}>
                           {org.domain}
                         </span>
                       </div>
@@ -380,7 +402,7 @@ const PreLoginPage = () => {
                   );
                 })
               ) : (
-                <div style={{ padding: '18px', textAlign: 'center', color: '#999', fontSize: '14px' }}>
+                <div style={{ padding: '20px', textAlign: 'center', color: '#999', fontSize: '15px' }}>
                   No organizations found
                 </div>
               )}
@@ -394,7 +416,7 @@ const PreLoginPage = () => {
           disabled={!selectedOrg}
           style={{
             width: '100%',
-            padding: '15px 0',
+            padding: '16px 0',
             border: 'none',
             borderRadius: '10px',
             backgroundColor: selectedOrg ? TEAL : '#e8e8e8',
@@ -406,6 +428,7 @@ const PreLoginPage = () => {
             marginTop: showDropdown ? '260px' : '14px',
             position: 'relative',
             zIndex: 1,
+            minHeight: '52px',
           }}
           onMouseEnter={e => { if (selectedOrg) e.currentTarget.style.opacity = '0.9'; }}
           onMouseLeave={e => { e.currentTarget.style.opacity = '1'; }}
