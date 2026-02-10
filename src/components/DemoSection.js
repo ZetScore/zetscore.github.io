@@ -6,6 +6,9 @@ const DemoSection = () => {
 
   const youtubeVideoId = '_zShxJofkjU';
   const youtubeEmbedUrl = `https://www.youtube.com/embed/${youtubeVideoId}?controls=1&modestbranding=1&rel=0`;
+  
+  // Demo request form URL
+  const demoRequestUrl = "https://forms.zohopublic.com/evolvizsoftwaresgroup/form/ZetScoreDemoRequest/formperma/Q7VIFiPZauUdJviXd8JnvwE8T27rF2wzbLvFBTWh4Vs";
 
   const demoPoints = [
     'Constructive peer review process',
@@ -18,6 +21,11 @@ const DemoSection = () => {
   
   const handlePlayClick = () => {
     setIsVideoPlaying(true);
+  };
+
+  const handleDemoRequestClick = () => {
+    // Open the demo request form in a new tab
+    window.open(demoRequestUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -104,7 +112,10 @@ const DemoSection = () => {
 
               {/* Request Full Demo Button */}
               <div className="mt-6">
-                <button className="inline-flex items-center justify-center px-6 py-3 font-semibold text-white transition-all duration-200 rounded-lg shadow-lg bg-custom-green hover:bg-custom-green hover:shadow-xl">
+                <button 
+                  onClick={handleDemoRequestClick}
+                  className="inline-flex items-center justify-center px-6 py-3 font-semibold text-white transition-all duration-200 rounded-lg shadow-lg bg-custom-green hover:bg-custom-green hover:shadow-xl"
+                >
                   Request a Demo
                 </button>
               </div>
