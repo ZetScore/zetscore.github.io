@@ -1,12 +1,46 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Headphones } from 'lucide-react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAssistanceOpen, setIsAssistanceOpen] = useState(false);
+  const dropdownRef = useRef(null);
+  
+  // Demo request form URL
+  const demoRequestUrl = "https://forms.zohopublic.com/evolvizsoftwaresgroup/form/ZetScoreDemoRequest/formperma/Q7VIFiPZauUdJviXd8JnvwE8T27rF2wzbLvFBTWh4Vs";
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  const toggleAssistanceDropdown = () => {
+    setIsAssistanceOpen(!isAssistanceOpen);
+  };
+
+  const handleJoinPriorityList = () => {
+    window.open(demoRequestUrl, '_blank', 'noopener,noreferrer');
+    setIsAssistanceOpen(false);
+  };
+
+  const handleSupportClick = () => {
+    setIsAssistanceOpen(false);
+    if (isMenuOpen) toggleMenu();
+  };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsAssistanceOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="sticky top-0 z-50 text-justify bg-white shadow-xl text-custom-green inter-character">
@@ -31,13 +65,67 @@ const Navbar = () => {
               PRICING
             </Link>
             
-            {/* REMOVED LOGIN BUTTON */}
-            
-            <a href="https://forms.zohopublic.com/evolvizsoftwaresgroup/form/ZetScoreDemoRequest/formperma/Q7VIFiPZauUdJviXd8JnvwE8T27rF2wzbLvFBTWh4Vs">
-              <button className="px-6 py-2 font-bold text-white transition duration-300 rounded-lg bg-custom-green hover:bg-custom-green">
-                JOIN PRIORITY LIST
+            {/* NEED ASSISTANCE BUTTON WITH DROPDOWN */}
+            <div className="relative" ref={dropdownRef}>
+              <button 
+                onClick={toggleAssistanceDropdown}
+                className="flex items-center gap-2 px-6 py-2 font-bold text-white transition duration-300 rounded-lg bg-custom-green hover:bg-custom-green"
+              >
+                <Headphones className="w-5 h-5" />
+                <span>Need Assistance ?</span>
               </button>
-            </a>
+              
+              {/* DROPDOWN MODAL - IN ROW LAYOUT */}
+              {isAssistanceOpen && (
+                <div className="absolute right-0 mt-2 w-[600px] bg-white rounded-lg shadow-xl border border-gray-200 z-50">
+                  <div className="p-6">
+                    <div className="mb-6">
+                      <h3 className="text-xl font-bold text-gray-900">
+                        We provide 24/7 support to all our customers
+                      </h3>
+                    </div>
+                    
+                    <div className="grid grid-cols-2 gap-6">
+                      {/* JOIN PRIORITY LIST CARD */}
+                      <div className="p-5 border border-gray-200 rounded-lg bg-gray-50">
+                        <div className="mb-4">
+                          <h4 className="mb-2 text-lg font-bold text-gray-900">Join Priority List</h4>
+                          <p className="text-sm text-gray-600">
+                            Be among the first to experience our platform. Get early access, 
+                            exclusive updates, and priority support.
+                          </p>
+                        </div>
+                        <button 
+                          onClick={handleJoinPriorityList}
+                          className="w-full px-4 py-3 text-sm font-bold text-white transition duration-300 rounded-lg bg-custom-green hover:bg-custom-green"
+                        >
+                          Join
+                        </button>
+                      </div>
+                      
+                      {/* SUPPORT CARD */}
+                      <div className="p-5 border border-gray-200 rounded-lg bg-gray-50">
+                        <div className="mb-4">
+                          <h4 className="mb-2 text-lg font-bold text-gray-900">Support</h4>
+                          <p className="text-sm text-gray-600">
+                            Contact our support team for technical assistance, 
+                            account questions, or any other inquiries.
+                          </p>
+                        </div>
+                        <Link to="/customer-support">
+                          <button 
+                            onClick={handleSupportClick}
+                            className="w-full px-4 py-3 text-sm font-bold text-white transition duration-300 rounded-lg bg-custom-green hover:bg-custom-green"
+                          >
+                            Contact Support
+                          </button>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
 
           <div className="flex justify-end md:hidden">
@@ -92,17 +180,33 @@ const Navbar = () => {
             PRICING
           </Link>
           
-          {/* REMOVED LOGIN BUTTON */}
-          
-          <a
-            href="https://forms.zohopublic.com/evolvizsoftwaresgroup/form/ZetScoreDemoRequest/formperma/Q7VIFiPZauUdJviXd8JnvwE8T27rF2wzbLvFBTWh4Vs"
-            className="block w-48"
-            onClick={toggleMenu}
-          >
-            <button className="w-full px-6 py-3 font-bold text-white transition duration-300 rounded-lg bg-custom-green hover:bg-custom-green">
-              JOIN PRIORITY LIST
+          {/* MOBILE NEED ASSISTANCE BUTTON */}
+          <div className="w-48">
+            <button className="flex items-center justify-center w-full gap-2 px-6 py-3 mb-2 font-bold text-white transition duration-300 rounded-lg bg-custom-green hover:bg-custom-green">
+              <Headphones className="w-5 h-5" />
+              <span>Need Assistance?</span>
             </button>
-          </a>
+            
+            {/* MOBILE ASSISTANCE OPTIONS - In row for larger mobile screens */}
+            <div className="mt-2 space-y-2 sm:grid sm:grid-cols-2 sm:gap-2 sm:space-y-0">
+              <button 
+                onClick={handleJoinPriorityList}
+                className="w-full px-4 py-2 text-sm font-bold text-white transition duration-300 bg-gray-600 rounded-lg hover:bg-gray-700"
+              >
+                Join Priority List
+              </button>
+              
+              <Link 
+                to="/customer-support" 
+                className="block"
+                onClick={toggleMenu}
+              >
+                <button className="w-full px-4 py-2 text-sm font-bold text-white transition duration-300 bg-gray-600 rounded-lg hover:bg-gray-700">
+                  Support
+                </button>
+              </Link>
+            </div>
+          </div>
         </div>
         
         <button

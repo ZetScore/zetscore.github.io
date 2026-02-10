@@ -115,14 +115,6 @@ const PreLoginPage = () => {
           Login with ZetScore Security
         </h1>
 
-        {/* Horizontal line between login and logo/search row */}
-        <hr style={{
-          border: 'none',
-          height: '1px',
-          backgroundColor: '#e8e8e8',
-          margin: '0 0 24px',
-        }} />
-
         {/* Logo and "Search your org to proceed to secure login" on the same row */}
         <div style={{ display: 'flex', alignItems: 'center', marginBottom: '28px' }}>
           <img
@@ -145,6 +137,14 @@ const PreLoginPage = () => {
           </p>
         </div>
 
+      {/* Horizontal line between login and logo/search row */}
+        <hr style={{
+          border: 'none',
+          height: '1px',
+          backgroundColor: '#e8e8e8',
+          margin: '0 0 24px',
+        }} />
+        
         {/* Affiliations Title with exclamation mark icon */}
         <div style={{
           marginBottom: '12px',
@@ -514,4 +514,4 @@ const PreLoginPage = () => {
   );
 };
 
-export default PreLoginPage;
+export default PreLoginPage
