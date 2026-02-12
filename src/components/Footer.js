@@ -61,6 +61,7 @@ const Footer = () => {
               <p className="font-bold">Support</p>
               <Link to="/faq" className="text-base text-gray-700 transition duration-200 hover:text-primary">FAQ</Link>
               <Link to="/customer-support" className="text-base text-gray-700 transition duration-200 hover:text-primary">Customer Support</Link>
+              <Link to="/zetscore-status" className="text-base text-gray-700 transition duration-200 hover:text-primary">ZetScore Status</Link>
               <div className="h-6"></div> {/* Placeholder to align with other columns */}
             </div>
           </div>

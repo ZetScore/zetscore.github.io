@@ -3,6 +3,9 @@ import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
+import StatusNavbar from './components/StatusNavbar';
+import Status from './components/ZetScoreStatus';
+import UpcomingMaintenance from './components/UpcomingMaintenance';
 import KeyFeatures from './components/KeyFeatures';
 import Hero from './components/Hero';
 import Pricing from './components/Pricing';
@@ -79,6 +82,8 @@ const WhatSetsUsApartScroll = () => {
   );
 };
 
+
+
 // Layout component with Navbar and Footer
 const Layout = ({ children }) => {
   return (
@@ -91,6 +96,21 @@ const Layout = ({ children }) => {
 };
 
 Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+// Status Layout component with StatusNavbar and Footer
+const StatusLayout = ({ children }) => {
+  return (
+    <div className="relative min-h-screen">
+      <StatusNavbar />
+      {children}
+      <Footer />
+    </div>
+  );
+};
+
+StatusLayout.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
@@ -171,6 +191,20 @@ const App = () => {
           <Layout>
             <EventsandWebinars />
           </Layout>
+        } />
+        
+        {/* Status route with StatusNavbar but main Footer */}
+        <Route path="/zetscore-status" element={
+          <StatusLayout>
+            <Status />
+          </StatusLayout>
+        } />
+
+        {/* NEW: Upcoming Maintenance route - uses same StatusNavbar */}
+        <Route path="/upcoming-maintainance" element={
+          <StatusLayout>
+            <UpcomingMaintenance />
+          </StatusLayout>
         } />
         
         {/* PreLogin route WITHOUT Navbar and Footer - full page */}

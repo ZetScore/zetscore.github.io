@@ -6,17 +6,11 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAssistanceOpen, setIsAssistanceOpen] = useState(false);
   const dropdownRef = useRef(null);
-  
-  // Demo request form URL
+
   const demoRequestUrl = "https://forms.zohopublic.com/evolvizsoftwaresgroup/form/ZetScoreDemoRequest/formperma/Q7VIFiPZauUdJviXd8JnvwE8T27rF2wzbLvFBTWh4Vs";
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const toggleAssistanceDropdown = () => {
-    setIsAssistanceOpen(!isAssistanceOpen);
-  };
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const toggleAssistanceDropdown = () => setIsAssistanceOpen(!isAssistanceOpen);
 
   const handleJoinPriorityList = () => {
     window.open(demoRequestUrl, '_blank', 'noopener,noreferrer');
@@ -28,24 +22,22 @@ const Navbar = () => {
     if (isMenuOpen) toggleMenu();
   };
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsAssistanceOpen(false);
       }
     };
-
     document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   return (
     <div className="sticky top-0 z-50 text-justify bg-white shadow-xl text-custom-green inter-character">
       <div className="grid items-center grid-cols-12 px-2 py-2 mx-auto">
         <div className="grid items-center grid-cols-2 col-span-10 col-start-2 md:grid-cols-2">
+
+          {/* Logo */}
           <div className="flex items-center">
             <img
               className="w-[70px] h-auto"
@@ -54,7 +46,8 @@ const Navbar = () => {
             />
           </div>
 
-          <div className="items-center justify-center hidden space-x-8 md:flex md:justify-end font-primary">
+          {/* Desktop Nav */}
+          <div className="items-center justify-end hidden space-x-8 md:flex font-primary">
             <Link to="/" className="text-xl font-bold hover:text-opacity-80">
               HOME
             </Link>
@@ -64,18 +57,18 @@ const Navbar = () => {
             <Link to="/pricing" className="text-xl font-bold hover:text-opacity-80">
               PRICING
             </Link>
-            
+
             {/* NEED ASSISTANCE BUTTON WITH DROPDOWN */}
             <div className="relative" ref={dropdownRef}>
-              <button 
+              <button
                 onClick={toggleAssistanceDropdown}
-                className="flex items-center gap-2 px-6 py-2 font-bold text-white transition duration-300 rounded-lg bg-custom-green hover:bg-custom-green"
+                className="inline-flex items-center gap-2 px-6 py-2 font-bold text-white transition duration-300 rounded-lg bg-custom-green hover:bg-custom-green"
               >
-                <Headphones className="w-5 h-5" />
-                <span>Need Assistance ?</span>
+                <Headphones className="w-5 h-5 shrink-0" />
+                <span className="text-base">Need Assistance?</span>
               </button>
-              
-              {/* DROPDOWN MODAL - IN ROW LAYOUT */}
+
+              {/* DROPDOWN */}
               {isAssistanceOpen && (
                 <div className="absolute right-0 mt-2 w-[600px] bg-white rounded-lg shadow-xl border border-gray-200 z-50">
                   <div className="p-6">
@@ -84,36 +77,34 @@ const Navbar = () => {
                         We provide 24/7 support to all our customers
                       </h3>
                     </div>
-                    
                     <div className="grid grid-cols-2 gap-6">
                       {/* JOIN PRIORITY LIST CARD */}
                       <div className="p-5 border border-gray-200 rounded-lg bg-gray-50">
                         <div className="mb-4">
                           <h4 className="mb-2 text-lg font-bold text-gray-900">Join Priority List</h4>
                           <p className="text-sm text-gray-600">
-                            Be among the first to experience our platform. Get early access, 
+                            Be among the first to experience our platform. Get early access,
                             exclusive updates, and priority support.
                           </p>
                         </div>
-                        <button 
+                        <button
                           onClick={handleJoinPriorityList}
                           className="w-full px-4 py-3 text-sm font-bold text-white transition duration-300 rounded-lg bg-custom-green hover:bg-custom-green"
                         >
                           Join
                         </button>
                       </div>
-                      
                       {/* SUPPORT CARD */}
                       <div className="p-5 border border-gray-200 rounded-lg bg-gray-50">
                         <div className="mb-4">
                           <h4 className="mb-2 text-lg font-bold text-gray-900">Support</h4>
                           <p className="text-sm text-gray-600">
-                            Contact our support team for technical assistance, 
+                            Contact our support team for technical assistance,
                             account questions, or any other inquiries.
                           </p>
                         </div>
                         <Link to="/customer-support">
-                          <button 
+                          <button
                             onClick={handleSupportClick}
                             className="w-full px-4 py-3 text-sm font-bold text-white transition duration-300 rounded-lg bg-custom-green hover:bg-custom-green"
                           >
@@ -128,6 +119,7 @@ const Navbar = () => {
             </div>
           </div>
 
+          {/* Mobile hamburger */}
           <div className="flex justify-end md:hidden">
             <button
               onClick={toggleMenu}
@@ -151,76 +143,73 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* ── Mobile Slide-in Menu ── */}
       <div
-        className={`fixed top-0 right-0 h-full bg-white bg-opacity-95 shadow-xl transition-transform duration-300 ease-in-out z-50 ${
+        className={`fixed top-0 right-0 h-full bg-white shadow-2xl transition-transform duration-300 ease-in-out z-50 w-3/4 sm:w-72 flex flex-col ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        } w-3/4 sm:w-1/2`}
+        }`}
       >
-        <div className="flex flex-col items-center justify-center h-full py-8 space-y-6">
-          <Link 
-            to="/" 
-            className="block text-xl font-bold hover:text-opacity-80" 
-            onClick={toggleMenu}
-          >
-            HOME
-          </Link>
-          <Link 
-            to="/features" 
-            className="block text-xl font-bold hover:text-opacity-80" 
-            onClick={toggleMenu}
-          >
-            FEATURES
-          </Link>
-          <Link 
-            to="/pricing" 
-            className="block text-xl font-bold hover:text-opacity-80" 
-            onClick={toggleMenu}
-          >
-            PRICING
-          </Link>
-          
-          {/* MOBILE NEED ASSISTANCE BUTTON */}
-          <div className="w-48">
-            <button className="flex items-center justify-center w-full gap-2 px-6 py-3 mb-2 font-bold text-white transition duration-300 rounded-lg bg-custom-green hover:bg-custom-green">
-              <Headphones className="w-5 h-5" />
-              <span>Need Assistance?</span>
-            </button>
-            
-            {/* MOBILE ASSISTANCE OPTIONS - In row for larger mobile screens */}
-            <div className="mt-2 space-y-2 sm:grid sm:grid-cols-2 sm:gap-2 sm:space-y-0">
-              <button 
-                onClick={handleJoinPriorityList}
-                className="w-full px-4 py-2 text-sm font-bold text-white transition duration-300 bg-gray-600 rounded-lg hover:bg-gray-700"
-              >
-                Join Priority List
-              </button>
-              
-              <Link 
-                to="/customer-support" 
-                className="block"
-                onClick={toggleMenu}
-              >
-                <button className="w-full px-4 py-2 text-sm font-bold text-white transition duration-300 bg-gray-600 rounded-lg hover:bg-gray-700">
-                  Support
-                </button>
-              </Link>
-            </div>
-          </div>
-        </div>
-        
+        {/* Close button */}
         <button
           onClick={toggleMenu}
-          className="absolute text-2xl font-bold top-6 right-6 text-custom-green focus:outline-none hover:text-opacity-80"
+          className="absolute flex items-center justify-center w-8 h-8 text-xl font-bold transition bg-gray-100 rounded-full top-5 right-5 text-custom-green focus:outline-none hover:bg-gray-200"
           aria-label="Close menu"
         >
           ×
         </button>
+
+        {/* Logo inside drawer */}
+        <div className="flex items-center px-6 pt-6 pb-4 border-b border-gray-100">
+          <img className="w-12 h-auto" src="/ZetScore_Icon.png" alt="Company Logo" />
+        </div>
+
+        {/* Nav links */}
+        <nav className="flex flex-col px-6 pt-6 space-y-1">
+          {[
+            { to: "/", label: "Home" },
+            { to: "/features", label: "Features" },
+            { to: "/pricing", label: "Pricing" },
+          ].map(({ to, label }) => (
+            <Link
+              key={to}
+              to={to}
+              onClick={toggleMenu}
+              className="flex items-center px-3 py-3 text-base font-bold transition rounded-lg text-custom-green hover:bg-gray-50"
+            >
+              {label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Assistance section */}
+        <div className="px-6 pt-6 mt-2 border-t border-gray-100">
+          <p className="mb-3 text-xs font-semibold tracking-widest text-gray-400 uppercase">
+            Need Assistance?
+          </p>
+          <div className="flex flex-col gap-3">
+            <button
+              onClick={() => { handleJoinPriorityList(); toggleMenu(); }}
+              className="inline-flex items-center justify-center w-full gap-2 px-4 py-3 text-sm font-bold text-white transition rounded-lg bg-custom-green hover:opacity-90"
+            >
+              <Headphones className="w-4 h-4 shrink-0" />
+              <span>Join Priority List</span>
+            </button>
+            <Link to="/customer-support" className="block" onClick={toggleMenu}>
+              <button className="inline-flex items-center justify-center w-full gap-2 px-4 py-3 text-sm font-bold text-white transition bg-gray-500 rounded-lg hover:bg-gray-600">
+                <svg viewBox="0 0 24 24" className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+                </svg>
+                <span>Contact Support</span>
+              </button>
+            </Link>
+          </div>
+        </div>
       </div>
-      
+
+      {/* Backdrop */}
       {isMenuOpen && (
-        <div 
-          className="fixed inset-0 z-40 bg-black bg-opacity-50 md:hidden"
+        <div
+          className="fixed inset-0 z-40 bg-black bg-opacity-40 md:hidden"
           onClick={toggleMenu}
         />
       )}
