@@ -1,57 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-
-const notifications = [
-  {
-    id: 1,
-    date: "Feb 15, 2026",
-    timeStart: "12:00 GMT",
-    timeEnd: "04:00 GMT",
-    title: "Onboarding System Maintenance",
-    detailsUrl: "#",
-    description:
-      "Scheduled maintenance for Onboarding services. The system will be unavailable during this window as we deploy performance improvements and security updates.",
-    status: "scheduled",
-    platform: "Onboarding",
-  },
-  {
-    id: 2,
-    date: "Feb 15, 2026",
-    timeStart: "12:00 GMT",
-    timeEnd: "04:00 GMT",
-    title: "Background Checks Maintenance",
-    detailsUrl: "#",
-    description:
-      "Background Check services will undergo scheduled maintenance. All background verification services will be temporarily unavailable during this period.",
-    status: "scheduled",
-    platform: "Background Checks",
-  },
-  {
-    id: 3,
-    date: "Feb 15, 2026",
-    timeStart: "12:00 GMT",
-    timeEnd: "04:00 GMT",
-    title: "Work Authorization Maintenance",
-    detailsUrl: "#",
-    description:
-      "Work Authorization verification system is under scheduled maintenance. Document submission and verification services will be temporarily paused.",
-    status: "scheduled",
-    platform: "Work Authorization",
-  }
-];
-
-const services = [
-  "All Services",
-  "Peer Review",
-  "Assessment",
-  "Employee Wellbeing",
-  "Net Promoter System",
-  "Personal Development",
-  "Workforce Analytics",
-  "Onboarding",
-  "Background Checks",
-  "Work Authorization",
-];
+import notificationsData from '../data/zetscore_status.json';
 
 const statusConfig = {
   scheduled: { label: "Scheduled" },
@@ -252,10 +201,38 @@ NotificationCard.propTypes = {
 export default function MaintenanceNotifications() {
   const [selectedService, setSelectedService] = useState("All Services");
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [notifications, setNotifications] = useState([]);
+  const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [currentMonth] = useState("Mar 2026");
+
+  useEffect(() => {
+    // Load data from JSON
+    try {
+      setNotifications(notificationsData.notifications || []);
+      
+      // Extract service names from the services array in the JSON
+      const serviceNames = (notificationsData.services || []).map(s => s.service);
+      setServices(["All Services", ...serviceNames]);
+      
+      setLoading(false);
+    } catch (error) {
+      console.error("Error loading notifications data:", error);
+      setLoading(false);
+    }
+  }, []);
 
   const filtered = notifications.filter(
     (n) => selectedService === "All Services" || n.platform === selectedService
   );
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-slate-50">
+        <div className="text-slate-400">Loading notifications...</div>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -370,7 +347,7 @@ export default function MaintenanceNotifications() {
               className="text-[30px] font-semibold text-slate-700 whitespace-nowrap"
               style={{ letterSpacing: "-0.025em" }}
             >
-              Mar 2026
+              {currentMonth}
             </h2>
             <div
               className="flex-1 h-px"

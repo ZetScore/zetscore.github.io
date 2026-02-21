@@ -51,7 +51,47 @@
     "operationalCount": 6,
     "maintenanceCount": 3,
     "degradedCount": 0,
-    "outageCount": 0,
-    "lastUpdated": "2026-02-21T10:30:00Z"
-  }
+    "outageCount": 0
+  },
+  "notifications": [
+    {
+      "id": 1,
+      "date": "Feb 15, 2026",
+      "timeStart": "12:00 GMT",
+      "timeEnd": "04:00 GMT",
+      "title": "Onboarding System Maintenance",
+      "detailsUrl": "#",
+      "description": "Scheduled maintenance for Onboarding services. The system will be unavailable during this window as we deploy performance improvements and security updates.",
+      "status": "scheduled",
+      "platform": "Onboarding"
+    },
+    {
+      "id": 2,
+      "date": "Feb 15, 2026",
+      "timeStart": "12:00 GMT",
+      "timeEnd": "04:00 GMT",
+      "title": "Background Checks Maintenance",
+      "detailsUrl": "#",
+      "description": "Background Check services will undergo scheduled maintenance. All background verification services will be temporarily unavailable during this period.",
+      "status": "scheduled",
+      "platform": "Background Checks"
+    },
+    {
+      "id": 3,
+      "date": "Feb 15, 2026",
+      "timeStart": "12:00 GMT",
+      "timeEnd": "04:00 GMT",
+      "title": "Work Authorization Maintenance",
+      "detailsUrl": "#",
+      "description": "Work Authorization verification system is under scheduled maintenance. Document submission and verification services will be temporarily paused.",
+      "status": "scheduled",
+      "platform": "Work Authorization"
+    }
+  ],
+  "months": [
+    {
+      "name": "Mar 2026",
+      "notifications": [1, 2, 3]
+    }
+  ]
 }
