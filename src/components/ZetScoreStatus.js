@@ -1,54 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { CheckCircle, Settings, AlertTriangle, XCircle } from 'lucide-react';
+import statusData from '../data/zetscore_status.json';
 
 const Status = () => {
-  const [statusData] = useState([
-    {
-      service: 'Peer Review',
-      status: 'Operational',
-      reason: 'All systems operational'
-    },
-    {
-      service: 'Assessment',
-      status: 'Operational',
-      reason: 'All systems operational'
-    },
-    {
-      service: 'Employee Wellbeing',
-      status: 'Operational',
-      reason: 'All systems operational'
-    },
-    {
-      service: 'Net Promoter System',
-      status: 'Operational',
-      reason: 'All systems operational'
-    },
-    {
-      service: 'Personal Development',
-      status: 'Operational',
-      reason: 'All systems operational'
-    },
-    {
-      service: 'Workforce Analytics',
-      status: 'Operational',
-      reason: 'All systems operational'
-    },
-    {
-      service: 'Onboarding',
-      status: 'Under Maintenance',
-      reason: 'Scheduled maintenance in progress'
-    },
-    {
-      service: 'Background Checks',
-      status: 'Under Maintenance',
-      reason: 'Scheduled maintenance in progress'
-    },
-    {
-      service: 'Work Authorization',
-      status: 'Under Maintenance',
-      reason: 'Scheduled maintenance in progress'
-    }
-  ]);
+  const [services, setServices] = useState([]);
+  const [, setMetadata] = useState({});
+  const [lastUpdated] = useState(new Date());
+
+  useEffect(() => {
+    // Load data from JSON
+    setServices(statusData.services);
+    setMetadata(statusData.metadata);
+  }, []);
 
   const getStatusIcon = (status) => {
     switch(status) {
@@ -63,6 +26,10 @@ const Status = () => {
       default:
         return null;
     }
+  };
+
+  const getOperationalCount = () => {
+    return services.filter(service => service.status === 'Operational').length;
   };
 
   return (
@@ -97,11 +64,13 @@ const Status = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <h2 className="mb-2 text-3xl font-bold text-gray-900">Current Status</h2>
-                  <p className="text-lg text-gray-600">Last updated: {new Date().toLocaleString()}</p>
+                  <p className="text-lg text-gray-600">Last updated: {lastUpdated.toLocaleString()}</p>
                 </div>
                 <div className="flex items-center gap-3 px-6 py-3 rounded-full" style={{ backgroundColor: '#e8f5e9' }}>
                   <CheckCircle className="w-6 h-6" style={{ color: '#3d9970' }} strokeWidth={2} />
-                  <span className="text-base font-semibold" style={{ color: '#2d7a55' }}>6 of 9 Operational</span>
+                  <span className="text-base font-semibold" style={{ color: '#2d7a55' }}>
+                    {getOperationalCount()} of {services.length} Operational
+                  </span>
                 </div>
               </div>
             </div>
@@ -123,7 +92,7 @@ const Status = () => {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {statusData.map((item, index) => (
+                  {services.map((item, index) => (
                     <tr key={index} className="transition-colors duration-150 hover:bg-gray-50">
                       <td className="px-8 py-6 text-xl font-semibold text-gray-900 whitespace-nowrap">
                         {item.service}

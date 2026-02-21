@@ -61,7 +61,14 @@ const Footer = () => {
               <p className="font-bold">Support</p>
               <Link to="/faq" className="text-base text-gray-700 transition duration-200 hover:text-primary">FAQ</Link>
               <Link to="/customer-support" className="text-base text-gray-700 transition duration-200 hover:text-primary">Customer Support</Link>
-              <Link to="/zetscore-status" className="text-base text-gray-700 transition duration-200 hover:text-primary">ZetScore Status</Link>
+              <Link to="/zetscore-status" className="flex items-center text-base text-gray-700 transition duration-200 hover:text-primary">
+                <span>ZetScore Status</span>
+                <div className="inline-flex items-center ml-1.5 animate-pulse text-green-600">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"/>
+                  </svg>
+                </div>
+              </Link>
               <div className="h-6"></div> {/* Placeholder to align with other columns */}
             </div>
           </div>

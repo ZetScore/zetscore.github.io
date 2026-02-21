@@ -1,0 +1,57 @@
+{
+  "services": [
+    {
+      "service": "Peer Review",
+      "status": "Operational",
+      "reason": "All systems operational"
+    },
+    {
+      "service": "Assessment",
+      "status": "Operational",
+      "reason": "All systems operational"
+    },
+    {
+      "service": "Employee Wellbeing",
+      "status": "Operational",
+      "reason": "All systems operational"
+    },
+    {
+      "service": "Net Promoter System",
+      "status": "Operational",
+      "reason": "All systems operational"
+    },
+    {
+      "service": "Personal Development",
+      "status": "Operational",
+      "reason": "All systems operational"
+    },
+    {
+      "service": "Workforce Analytics",
+      "status": "Operational",
+      "reason": "All systems operational"
+    },
+    {
+      "service": "Onboarding",
+      "status": "Under Maintenance",
+      "reason": "Scheduled maintenance in progress"
+    },
+    {
+      "service": "Background Checks",
+      "status": "Under Maintenance",
+      "reason": "Scheduled maintenance in progress"
+    },
+    {
+      "service": "Work Authorization",
+      "status": "Under Maintenance",
+      "reason": "Scheduled maintenance in progress"
+    }
+  ],
+  "metadata": {
+    "totalServices": 9,
+    "operationalCount": 6,
+    "maintenanceCount": 3,
+    "degradedCount": 0,
+    "outageCount": 0,
+    "lastUpdated": "2026-02-21T10:30:00Z"
+  }
+}
