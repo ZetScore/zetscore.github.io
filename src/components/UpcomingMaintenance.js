@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import notificationsData from '../data/zetscore_status.json';
 
 const statusConfig = {
   scheduled: { label: "Scheduled" },
@@ -204,22 +203,44 @@ export default function MaintenanceNotifications() {
   const [notifications, setNotifications] = useState([]);
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [currentMonth] = useState("Mar 2026");
 
-  useEffect(() => {
-    // Load data from JSON
+  const fetchNotificationsData = async () => {
     try {
-      setNotifications(notificationsData.notifications || []);
+      setLoading(true);
+      setError(null);
+      
+      const response = await fetch('https://raw.githubusercontent.com/IZSoftware/product-status/refs/heads/main/zetscore_status.json');
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      
+      setNotifications(data.notifications || []);
       
       // Extract service names from the services array in the JSON
-      const serviceNames = (notificationsData.services || []).map(s => s.service);
+      const serviceNames = (data.services || []).map(s => s.service);
       setServices(["All Services", ...serviceNames]);
       
-      setLoading(false);
-    } catch (error) {
-      console.error("Error loading notifications data:", error);
+    } catch (err) {
+      console.error("Error loading notifications data:", err);
+      setError(err.message || "Failed to fetch notifications data");
+    } finally {
       setLoading(false);
     }
+  };
+
+  useEffect(() => {
+    fetchNotificationsData();
+    
+    // Optional: Set up periodic refresh (every 5 minutes)
+    const intervalId = setInterval(fetchNotificationsData, 5 * 60 * 1000);
+    
+    // Cleanup interval on component unmount
+    return () => clearInterval(intervalId);
   }, []);
 
   const filtered = notifications.filter(
@@ -229,7 +250,27 @@ export default function MaintenanceNotifications() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-slate-50">
-        <div className="text-slate-400">Loading notifications...</div>
+        <div className="text-center">
+          <div className="inline-block w-8 h-8 border-4 border-green-500 border-solid rounded-full animate-spin border-r-transparent"></div>
+          <p className="mt-4 text-slate-400">Loading notifications...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-slate-50">
+        <div className="max-w-md p-6 border border-red-200 rounded-lg bg-red-50">
+          <h3 className="mb-2 text-lg font-semibold text-red-800">Error Loading Data</h3>
+          <p className="mb-4 text-red-600">{error}</p>
+          <button 
+            onClick={fetchNotificationsData}
+            className="px-4 py-2 text-white transition-colors bg-red-600 rounded hover:bg-red-700"
+          >
+            Retry
+          </button>
+        </div>
       </div>
     );
   }
@@ -359,7 +400,7 @@ export default function MaintenanceNotifications() {
           <div className="flex flex-col gap-5">
             {filtered.map((n, i) => (
               <div
-                key={n.id}
+                key={n.id || i}
                 className="notification-enter"
                 style={{ animationDelay: `${i * 90}ms` }}
               >

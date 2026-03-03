@@ -1,16 +1,46 @@
 import { useState, useEffect } from 'react';
 import { CheckCircle, Settings, AlertTriangle, XCircle } from 'lucide-react';
-import statusData from '../data/zetscore_status.json';
 
 const Status = () => {
   const [services, setServices] = useState([]);
   const [, setMetadata] = useState({});
-  const [lastUpdated] = useState(new Date());
+  const [lastUpdated, setLastUpdated] = useState(new Date());
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const fetchStatusData = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      
+      const response = await fetch('https://raw.githubusercontent.com/IZSoftware/product-status/refs/heads/main/zetscore_status.json');
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      
+      setServices(data.services || []);
+      setMetadata(data.metadata || {});
+      setLastUpdated(new Date());
+      
+    } catch (err) {
+      console.error('Error fetching status data:', err);
+      setError(err.message || 'Failed to fetch status data');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    // Load data from JSON
-    setServices(statusData.services);
-    setMetadata(statusData.metadata);
+    fetchStatusData();
+    
+    // Optional: Set up periodic refresh (every 5 minutes)
+    const intervalId = setInterval(fetchStatusData, 5 * 60 * 1000);
+    
+    // Cleanup interval on component unmount
+    return () => clearInterval(intervalId);
   }, []);
 
   const getStatusIcon = (status) => {
@@ -31,6 +61,42 @@ const Status = () => {
   const getOperationalCount = () => {
     return services.filter(service => service.status === 'Operational').length;
   };
+
+  // Loading state
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+        <div className="text-center">
+          <div className="inline-block w-8 h-8 border-4 border-green-500 border-solid rounded-full animate-spin border-r-transparent"></div>
+          <p className="mt-4 text-gray-600">Loading status data...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Error state
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+        <div className="grid items-center grid-cols-12 px-2 mx-auto">
+          <div className="col-span-10 col-start-2">
+            <div className="py-12">
+              <div className="p-6 border border-red-200 rounded-lg bg-red-50">
+                <h3 className="mb-2 text-lg font-semibold text-red-800">Error Loading Data</h3>
+                <p className="mb-4 text-red-600">{error}</p>
+                <button 
+                  onClick={fetchStatusData}
+                  className="px-4 py-2 text-white transition-colors bg-red-600 rounded hover:bg-red-700"
+                >
+                  Retry
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
