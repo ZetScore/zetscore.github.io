@@ -4,11 +4,10 @@ import HelpModal from './HelpModal';
 
 // Mock organization data
 const ORGANIZATIONS = [
-  { id: 1, name: 'Kenya Revenue Authority', model: 'enterprise', domain: 'kra.zetscore.com' },
-  { id: 2, name: 'Equity Group Holding', model: 'enterprise', domain: 'equity.zetscore.com' },
-  { id: 3, name: 'Cooperative Bank', model: 'enterprise', domain: 'coop.zetscore.com' },
-  { id: 4, name: 'KCB Bank', model: 'enterprise', domain: 'kcb.zetscore.com' },
-  { id: 5, name: 'Standard Chartered', model: 'enterprise', domain: 'sc.zetscore.com' },
+  { id: 1, name: 'Test ZetScore', model: 'enterprise', domain: 'test.zetscore.com' },
+  { id: 2, name: 'KWANZA TUKULE FOODS', model: 'enterprise', domain: 'kwanza.zetscore.com' },
+  { id: 3, name: 'Zuri Health', model: 'enterprise', domain: 'zuri.zetscore.com' },
+  { id: 4, name: 'African Banking Corporation Limited', model: 'enterprise', domain: 'abc.zetscore.com' },
 ];
 
 const TEAL = '#3d9970';
