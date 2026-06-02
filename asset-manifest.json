@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.2fa5e8c2.css",
-    "main.js": "/static/js/main.dc8c3669.js",
+    "main.js": "/static/js/main.57507fbd.js",
     "static/js/488.62f29c13.chunk.js": "/static/js/488.62f29c13.chunk.js",
     "static/media/group-afro-americans-working-together.jpg": "/static/media/group-afro-americans-working-together.6ef09d3be8a0f70da119.jpg",
     "static/media/pesrsonal development plan.png": "/static/media/pesrsonal development plan.9caea78e60eb6acf9bbd.png",
@@ -10,11 +10,11 @@
     "static/media/Employee-Wellbeing-Main.jpg": "/static/media/Employee-Wellbeing-Main.1959b6866dcf4208fe32.jpg",
     "index.html": "/index.html",
     "main.2fa5e8c2.css.map": "/static/css/main.2fa5e8c2.css.map",
-    "main.dc8c3669.js.map": "/static/js/main.dc8c3669.js.map",
+    "main.57507fbd.js.map": "/static/js/main.57507fbd.js.map",
     "488.62f29c13.chunk.js.map": "/static/js/488.62f29c13.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2fa5e8c2.css",
-    "static/js/main.dc8c3669.js"
+    "static/js/main.57507fbd.js"
   ]
 }
