@@ -1,18 +1,18 @@
 import { useState } from 'react';
-import { Plus, Minus } from 'lucide-react';
+import { Plus, Minus, X } from 'lucide-react';
 import PricingFaqs from '../data/pricingfaq.json';
 
 const Pricing = () => {
   const [openIndex, setOpenIndex] = useState(null);
+  const [isPriceModalOpen, setIsPriceModalOpen] = useState(false);
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  // Checkmark icon helper
   const CheckIcon = () => (
     <svg className="w-6 h-6 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 0 001.414 0l4-4z" clipRule="evenodd" />
     </svg>
   );
 
@@ -120,6 +120,63 @@ const Pricing = () => {
         </div>
       </section>
 
+      {/* View Our Price Section */}
+      <section className="py-12 bg-white">
+        <div className="grid grid-cols-12 px-2 mx-auto">
+          <div className="flex justify-center col-span-10 col-start-2">
+            <button
+              onClick={() => setIsPriceModalOpen(true)}
+              className="px-6 py-2 font-bold text-white transition duration-300 rounded-lg bg-custom-green hover:bg-opacity-90"
+            >
+              View Our Price
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* View Our Price Modal */}
+      {isPriceModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50">
+          <div className="relative w-full max-w-[95vw] max-h-[95vh] overflow-y-auto bg-white rounded-lg shadow-lg">
+            <button
+              onClick={() => setIsPriceModalOpen(false)}
+              className="absolute z-10 p-2 text-gray-500 bg-white rounded-full top-4 right-4 bg-opacity-80 hover:bg-gray-100"
+              aria-label="Close"
+            >
+              <X className="w-7 h-7" />
+            </button>
+            <div className="p-6 md:p-10 text-center">
+              <h1 className="mb-6 font-handwriting text-6xl md:text-7xl text-gray-900">
+                You are not{' '}
+                <span className="relative inline-block">
+                  dreaming!
+                  <svg
+                    className="absolute left-0 w-full pointer-events-none -bottom-1"
+                    height="10"
+                    viewBox="0 0 200 10"
+                    preserveAspectRatio="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 6 C 50 2, 150 2, 198 6"
+                      stroke="#F87171"
+                      strokeWidth="6"
+                      strokeLinecap="round"
+                      fill="none"
+                    />
+                  </svg>
+                </span>
+              </h1>
+              <img
+                src="/Pricing.png"
+                alt="ZetScore pricing plans"
+                className="w-full h-auto rounded-lg"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Compare Features Section */}
       <section className="py-16 bg-white">
         <div className="grid grid-cols-12 px-2 mx-auto">
@@ -175,9 +232,34 @@ const Pricing = () => {
       <section className="py-16 bg-gray-50">
         <div className="grid grid-cols-12 px-2 mx-auto">
           <div className="col-span-10 col-start-2">
-            <h2 className="mb-12 text-3xl font-bold text-left md:text-4xl">
-              Frequently Asked Questions
+            <h2 className="mb-4 font-handwriting text-left text-gray-900 text-6xl md:text-7xl">
+              Any{' '}
+              <span className="relative inline-block">
+                Questions
+                <svg
+                  className="absolute left-0 w-full pointer-events-none -bottom-2"
+                  height="10"
+                  viewBox="0 0 200 10"
+                  preserveAspectRatio="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M2 6 C 50 2, 150 2, 198 6"
+                    stroke="#2196f3"
+                    strokeWidth="6"
+                    strokeLinecap="round"
+                    fill="none"
+                  />
+                </svg>
+              </span>
+              ?
             </h2>
+            <p className="mt-6 mb-12 text-lg text-left text-gray-700">
+              If the answer to your question is not on this page, please contact our{' '}
+              <a href="/contact-us" className="font-semibold text-custom-green hover:underline">
+                Account Managers
+              </a>
+            </p>
 
             {/* General */}
             <div className="mb-10">

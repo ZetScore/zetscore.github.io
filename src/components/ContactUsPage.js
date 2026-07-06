@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Calendar } from 'lucide-react';
 
 // API configuration
 const API_CONFIG = {
@@ -35,6 +36,29 @@ Modal.propTypes = {
   message: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['success', 'error']).isRequired,
   onClose: PropTypes.func.isRequired
+};
+
+const RedirectCard = ({ title, description, href }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex items-center flex-1 gap-6 p-8 transition duration-300 border-2 border-gray-200 rounded-2xl bg-gray-50 hover:border-custom-green hover:shadow-xl"
+  >
+    <span className="inline-flex items-center justify-center flex-shrink-0 rounded-2xl w-20 h-20 bg-custom-green/10">
+      <Calendar className="w-10 h-10 text-custom-green" />
+    </span>
+    <span>
+      <span className="block text-xl font-bold text-gray-900 md:text-2xl">{title}</span>
+      <span className="block mt-1 text-base text-gray-500 md:text-lg">{description}</span>
+    </span>
+  </a>
+);
+
+RedirectCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  href: PropTypes.string.isRequired
 };
 
 const ContactUsPage = () => {
@@ -221,10 +245,6 @@ const ContactUsPage = () => {
       } else {
         showModal('Form submitted! There was a network issue, but we have recorded your information.', 'success');
       }
-      
-      // Log the form data for debugging or manual processing
-      // eslint-disable-next-line no-undef
-      console.log('Form data for manual processing:', formDataToSubmit); // Log the original data
     } finally {
       setIsSubmitting(false);
     }
@@ -440,6 +460,20 @@ const ContactUsPage = () => {
                   </div>
                 </form>
               </div>
+            </div>
+
+            {/* Become a Partner / Request Custom Developments */}
+            <div className="flex flex-col gap-6 mt-10 md:flex-row">
+              <RedirectCard
+                title="Become a partner"
+                description="Appointment with a partner manager"
+                href="https://izsoftwares.com/about/affiliate-agent"
+              />
+              <RedirectCard
+                title="Request Custom Developments"
+                description="Need to get in touch with developers?"
+                href="https://izsoftwares.com/contact-us"
+              />
             </div>
 
             {/* Microservices Section */}
