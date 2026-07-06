@@ -8,6 +8,7 @@ export default {
     extend: {
       fontFamily: {
         primary: ['Anek Telugu', 'sans-serif'],  
+        handwriting: ['Caveat', 'cursive'],
       },
       colors: {
         'custom-green': '#3d9970',  
