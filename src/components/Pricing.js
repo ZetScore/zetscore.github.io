@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Plus, Minus, X } from 'lucide-react';
 import PricingFaqs from '../data/pricingfaq.json';
+import { Link } from "react-router-dom";
 
 const Pricing = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -256,9 +257,9 @@ const Pricing = () => {
             </h2>
             <p className="mt-6 mb-12 text-lg text-left text-gray-700">
               If the answer to your question is not on this page, please contact our{' '}
-              <a href="/contact-us" className="font-semibold text-custom-green hover:underline">
+              <Link to ="/contact-us" className="font-semibold text-custom-green hover:underline">
                 Account Managers
-              </a>
+              </Link>
             </p>
 
             {/* General */}
