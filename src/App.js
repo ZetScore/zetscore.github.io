@@ -10,6 +10,7 @@ import KeyFeatures from './components/KeyFeatures';
 import Hero from './components/Hero';
 import Pricing from './components/Pricing';
 import WhyUs from "./components/WhyUs";
+import ZetScoreBanner from "./components/ZetScoreBanner";
 import FAQSection from "./components/FAQSection";
 import ContactUsPage from "./components/ContactUsPage";
 import FaqPage from "./components/FaqPage";
@@ -28,6 +29,7 @@ const Homepage = () => {
     <>
       <Hero />
       <WhyUs />
+      <ZetScoreBanner />
       <DemoSection />
       <KeyFeatures />
       <WhatSetsUsApart />
@@ -51,6 +53,7 @@ const FeaturesPage = () => {
     <>
       <Hero />
       <WhyUs />
+      <ZetScoreBanner />
       <DemoSection />
       <KeyFeatures />
       <WhatSetsUsApart />
@@ -74,6 +77,7 @@ const WhatSetsUsApartScroll = () => {
     <>
       <Hero />
       <WhyUs />
+      <ZetScoreBanner />
       <DemoSection />
       <KeyFeatures />
       <WhatSetsUsApart />

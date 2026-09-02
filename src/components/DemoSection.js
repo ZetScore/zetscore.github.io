@@ -6,8 +6,7 @@ const DemoSection = () => {
 
   const youtubeVideoId = 'cdGByT0nWxg';
   const youtubeEmbedUrl = `https://www.youtube.com/embed/${youtubeVideoId}?controls=1&modestbranding=1&rel=0`;
-  
-  // Demo request form URL
+
   const demoRequestUrl = "https://forms.zohopublic.com/evolvizsoftwaresgroup/form/ZetScoreDemoRequest/formperma/Q7VIFiPZauUdJviXd8JnvwE8T27rF2wzbLvFBTWh4Vs";
 
   const demoPoints = [
@@ -18,13 +17,12 @@ const DemoSection = () => {
     'Personal development planning',
     'Workforce analytics dashboards',
   ];
-  
+
   const handlePlayClick = () => {
     setIsVideoPlaying(true);
   };
 
   const handleDemoRequestClick = () => {
-    // Open the demo request form in a new tab
     window.open(demoRequestUrl, '_blank', 'noopener,noreferrer');
   };
 
@@ -33,7 +31,7 @@ const DemoSection = () => {
       <div className="grid items-center grid-cols-12 px-2 py-2 mx-auto">
         <div className="col-span-10 col-start-2 px-4 py-8 sm:px-8 lg:px-16">
           {/* Header */}
-          <div className="grid items-center grid-cols-2 mb-12">
+          <div className="grid items-center grid-cols-2 mb-4">
             <div>
               <h2 className="mb-6 text-3xl font-bold text-gray-900 lg:text-5xl">
                 ZetScore in Action
@@ -47,12 +45,11 @@ const DemoSection = () => {
       </div>
 
       <div className="grid items-center grid-cols-12 px-2 py-2 mx-auto mb-6">
-        <div className="col-span-10 col-start-2 px-4 py-12 sm:px-6 lg:px-8">
+        <div className="col-span-10 col-start-2 px-4 py-2 sm:px-6 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             {/* Video Section */}
             <div className="relative">
               <div className="relative overflow-hidden bg-gray-900 shadow-2xl rounded-2xl">
-                {/* Video Placeholder or Embedded Video */}
                 <div className="relative flex items-center justify-center aspect-video">
                   {isVideoPlaying ? (
                     <iframe
@@ -76,7 +73,7 @@ const DemoSection = () => {
                       </div>
                     </button>
                   )}
-                  
+
                   {!isVideoPlaying && (
                     <div className="absolute left-0 bottom-4">
                       <div className="p-4 text-white rounded-lg bg-black/50 backdrop-blur-sm">
@@ -86,7 +83,6 @@ const DemoSection = () => {
                   )}
                 </div>
 
-                {/* Video Controls */}
                 <div className="absolute flex space-x-2 bottom-4 right-4">
                   <button className="p-2 text-white transition-colors rounded-lg bg-white/20 backdrop-blur-sm hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50">
                     <Download className="w-5 h-5" />
@@ -100,7 +96,7 @@ const DemoSection = () => {
               <h3 className="mb-6 text-2xl font-bold text-gray-900">
                 What you will see in this demo:
               </h3>
-              
+
               <div className="mb-8 space-y-4">
                 {demoPoints.map((point, index) => (
                   <div key={index} className="flex items-start space-x-3">
@@ -110,9 +106,8 @@ const DemoSection = () => {
                 ))}
               </div>
 
-              {/* Request Full Demo Button */}
               <div className="mt-6">
-                <button 
+                <button
                   onClick={handleDemoRequestClick}
                   className="inline-flex items-center justify-center px-6 py-3 font-semibold text-white transition-all duration-200 rounded-lg shadow-lg bg-custom-green hover:bg-custom-green hover:shadow-xl"
                 >

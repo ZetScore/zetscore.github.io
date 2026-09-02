@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { Plus, Minus, X } from 'lucide-react';
 import PricingFaqs from '../data/pricingfaq.json';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import GetPricingModal from './GetPricingModal';
 
 const Pricing = () => {
   const [openIndex, setOpenIndex] = useState(null);
   const [isPriceModalOpen, setIsPriceModalOpen] = useState(false);
+  const [isGetPricingModalOpen, setIsGetPricingModalOpen] = useState(false);
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -47,14 +49,12 @@ const Pricing = () => {
               Flexible pricing plans to suit businesses of all sizes.
             </p>
             <div className="flex justify-start">
-              <a
-                href="https://forms.zohopublic.com/evolvizsoftwaresgroup/form/ZetScoreDemoRequest/formperma/Q7VIFiPZauUdJviXd8JnvwE8T27rF2wzbLvFBTWh4Vs"
-                className="inline-block"
+              <button
+                onClick={() => setIsGetPricingModalOpen(true)}
+                className="px-6 py-2 font-bold text-white transition duration-300 rounded-lg bg-custom-green hover:bg-opacity-90"
               >
-                <button className="px-6 py-2 font-bold text-white transition duration-300 rounded-lg bg-custom-green hover:bg-opacity-90">
-                  Get Started
-                </button>
-              </a>
+                Get Pricing
+              </button>
             </div>
           </div>
         </div>
@@ -86,8 +86,11 @@ const Pricing = () => {
                   </ul>
                 </div>
                 <div className="flex justify-start">
-                  <button className="px-6 py-2 font-bold text-white transition duration-300 rounded-lg bg-custom-green hover:bg-opacity-90">
-                    Get Started
+                  <button
+                    onClick={() => setIsGetPricingModalOpen(true)}
+                    className="px-6 py-2 font-bold text-white transition duration-300 rounded-lg bg-custom-green hover:bg-opacity-90"
+                  >
+                    Get Pricing
                   </button>
                 </div>
               </div>
@@ -111,7 +114,10 @@ const Pricing = () => {
                   </ul>
                 </div>
                 <div className="flex justify-start">
-                  <button className="px-6 py-2 font-bold text-white transition duration-300 rounded-lg bg-custom-green hover:bg-opacity-90">
+                  <button
+                    onClick={() => setIsGetPricingModalOpen(true)}
+                    className="px-6 py-2 font-bold text-white transition duration-300 rounded-lg bg-custom-green hover:bg-opacity-90"
+                  >
                     Contact Sales
                   </button>
                 </div>
@@ -135,7 +141,7 @@ const Pricing = () => {
         </div>
       </section>
 
-      {/* View Our Price Modal */}
+      {/* View Our Price Modal (unchanged) */}
       {isPriceModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50">
           <div className="relative w-full max-w-[95vw] max-h-[95vh] overflow-y-auto bg-white rounded-lg shadow-lg">
@@ -146,8 +152,8 @@ const Pricing = () => {
             >
               <X className="w-7 h-7" />
             </button>
-            <div className="p-6 md:p-10 text-center">
-              <h1 className="mb-6 font-handwriting text-6xl md:text-7xl text-gray-900">
+            <div className="p-6 text-center md:p-10">
+              <h1 className="mb-6 text-6xl text-gray-900 font-handwriting md:text-7xl">
                 You are not{' '}
                 <span className="relative inline-block">
                   dreaming!
@@ -176,6 +182,11 @@ const Pricing = () => {
             </div>
           </div>
         </div>
+      )}
+
+      {/* Get Pricing Modal */}
+      {isGetPricingModalOpen && (
+        <GetPricingModal onClose={() => setIsGetPricingModalOpen(false)} />
       )}
 
       {/* Compare Features Section */}
@@ -233,7 +244,7 @@ const Pricing = () => {
       <section className="py-16 bg-gray-50">
         <div className="grid grid-cols-12 px-2 mx-auto">
           <div className="col-span-10 col-start-2">
-            <h2 className="mb-4 font-handwriting text-left text-gray-900 text-6xl md:text-7xl">
+            <h2 className="mb-4 text-6xl text-left text-gray-900 font-handwriting md:text-7xl">
               Any{' '}
               <span className="relative inline-block">
                 Questions
