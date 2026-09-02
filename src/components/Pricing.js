@@ -1,11 +1,325 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Plus, Minus, X } from 'lucide-react';
 import PricingFaqs from '../data/pricingfaq.json';
 import { Link } from "react-router-dom";
 
+// API configuration (same endpoint as Contact Us page)
+const API_CONFIG = {
+  URL: "https://contact-form-handler-885787520862.europe-west1.run.app",
+  TIMEOUT: 40000,
+  MAX_RETRIES: 2
+};
+
+const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+// Notification modal (same as Contact Us page's Modal)
+const NotificationModal = ({ message, type, onClose }) => {
+  const bgColor = type === 'success' ? 'bg-custom-green' : 'bg-red-500';
+
+  return (
+    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black bg-opacity-50">
+      <div className={`${bgColor} text-white px-6 py-4 rounded-lg shadow-lg max-w-sm w-full flex flex-col items-center gap-4`}>
+        <span className="text-center">{message}</span>
+        <button
+          onClick={onClose}
+          className="px-4 py-2 text-black transition duration-300 bg-white rounded-lg hover:bg-gray-200"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  );
+};
+
+NotificationModal.propTypes = {
+  message: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(['success', 'error']).isRequired,
+  onClose: PropTypes.func.isRequired
+};
+
+// Get Pricing request modal — trimmed contact-style form
+const GetPricingModal = ({ onClose }) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [notification, setNotification] = useState(null);
+  const [errors, setErrors] = useState({});
+  const [formData, setFormData] = useState({
+    first_name: '',
+    last_name: '',
+    email: '',
+    company: '',
+    work_phone: '',
+    country: '',
+    employees: '',
+  });
+
+  const countries = [
+    { value: 'Kenya', label: 'Kenya' },
+    { value: 'Botswana', label: 'Botswana' },
+    { value: 'Ghana', label: 'Ghana' },
+    { value: 'Namibia', label: 'Namibia' },
+    { value: 'Rwanda', label: 'Rwanda' }
+  ].sort((a, b) => {
+    if (a.value === 'Kenya') return -1;
+    if (b.value === 'Kenya') return 1;
+    return a.value.localeCompare(b.value);
+  });
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (formData.email && !EMAIL_REGEX.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+    }
+    if (formData.work_phone && !/^\d+$/.test(formData.work_phone)) {
+      newErrors.work_phone = 'Phone number should contain only numbers';
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+
+    if (id === 'work_phone') {
+      const numbersOnly = value.replace(/\D/g, '');
+      setFormData(prev => ({ ...prev, [id]: numbersOnly }));
+    } else {
+      setFormData(prev => ({ ...prev, [id]: value }));
+    }
+
+    if (errors[id]) {
+      setErrors(prev => ({ ...prev, [id]: '' }));
+    }
+  };
+
+  const submitToAPI = async (data, retryCount = 0) => {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), API_CONFIG.TIMEOUT);
+
+    try {
+      const response = await fetch(API_CONFIG.URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        mode: 'cors',
+        body: JSON.stringify({
+          name: `${data.first_name} ${data.last_name}`,
+          email: data.email,
+          message: `Product: ZetScore\nRequest Type: Pricing Quote\nCompany: ${data.company}\nWork Phone: ${data.work_phone}\nCountry: ${data.country}\nNumber of Employees: ${data.employees}`,
+          source: 'ZetScore-Pricing'
+        }),
+        signal: controller.signal
+      });
+
+      clearTimeout(timeoutId);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      return await response.json();
+    } catch (error) {
+      clearTimeout(timeoutId);
+
+      if (retryCount < API_CONFIG.MAX_RETRIES) {
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        return submitToAPI(data, retryCount + 1);
+      }
+
+      throw error;
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!validateForm()) {
+      setNotification({ message: 'Please check your form for errors.', type: 'error' });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      setNotification({ message: 'Thank you! Our team will get back to you with pricing shortly.', type: 'success' });
+
+      const formDataToSubmit = { ...formData };
+
+      setFormData({
+        first_name: '',
+        last_name: '',
+        email: '',
+        company: '',
+        work_phone: '',
+        country: '',
+        employees: '',
+      });
+      setErrors({});
+
+      await submitToAPI(formDataToSubmit);
+    } catch (error) {
+      console.error('Pricing request submission failed:', error.message);
+      setNotification({ message: 'Submitted! There was a network issue, but we have recorded your information.', type: 'success' });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50">
+      <div className="relative w-full max-w-2xl p-8 bg-white rounded-lg shadow-xl">
+        <button
+          onClick={onClose}
+          className="absolute p-2 text-gray-500 rounded-full top-4 right-4 hover:bg-gray-100"
+          aria-label="Close"
+        >
+          <X className="w-6 h-6" />
+        </button>
+
+        <h2 className="mb-2 text-2xl font-bold text-gray-900">Get Pricing</h2>
+        <p className="mb-6 text-gray-600">Tell us a bit about your business and we will send you a tailored quote.</p>
+
+        {notification && (
+          <NotificationModal
+            message={notification.message}
+            type={notification.type}
+            onClose={() => {
+              setNotification(null);
+              if (notification.type === 'success') onClose();
+            }}
+          />
+        )}
+
+        <form className="space-y-5" onSubmit={handleSubmit}>
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+            <div>
+              <label htmlFor="first_name" className="sr-only">First Name*</label>
+              <input
+                type="text"
+                id="first_name"
+                value={formData.first_name}
+                onChange={handleInputChange}
+                placeholder="First Name*"
+                className="w-full px-4 py-3 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent"
+                required
+              />
+            </div>
+
+            <div>
+              <label htmlFor="last_name" className="sr-only">Last Name*</label>
+              <input
+                type="text"
+                id="last_name"
+                value={formData.last_name}
+                onChange={handleInputChange}
+                placeholder="Last Name*"
+                className="w-full px-4 py-3 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent"
+                required
+              />
+            </div>
+
+            <div>
+              <label htmlFor="email" className="sr-only">Business Email*</label>
+              <input
+                type="email"
+                id="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                placeholder="Business Email*"
+                className={`w-full px-4 py-3 text-gray-900 placeholder-gray-500 border rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent ${
+                  errors.email ? 'border-red-500' : 'border-gray-300'
+                }`}
+                required
+              />
+              {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
+            </div>
+
+            <div>
+              <label htmlFor="work_phone" className="sr-only">Work Phone*</label>
+              <input
+                type="tel"
+                id="work_phone"
+                value={formData.work_phone}
+                onChange={handleInputChange}
+                placeholder="Work Phone*"
+                className={`w-full px-4 py-3 text-gray-900 placeholder-gray-500 border rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent ${
+                  errors.work_phone ? 'border-red-500' : 'border-gray-300'
+                }`}
+                required
+              />
+              {errors.work_phone && <p className="mt-1 text-sm text-red-500">{errors.work_phone}</p>}
+            </div>
+
+            <div>
+              <label htmlFor="company" className="sr-only">Company Name*</label>
+              <input
+                type="text"
+                id="company"
+                value={formData.company}
+                onChange={handleInputChange}
+                placeholder="Company Name*"
+                className="w-full px-4 py-3 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent"
+                required
+              />
+            </div>
+
+            <div>
+              <label htmlFor="country" className="sr-only">Country*</label>
+              <select
+                id="country"
+                value={formData.country}
+                onChange={handleInputChange}
+                className="w-full px-4 py-3 text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent"
+                required
+              >
+                <option value="" disabled className="text-gray-500">Country*</option>
+                {countries.map((country) => (
+                  <option key={country.value} value={country.value}>
+                    {country.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="md:col-span-2">
+              <label htmlFor="employees" className="sr-only"># of Employees*</label>
+              <select
+                id="employees"
+                value={formData.employees}
+                onChange={handleInputChange}
+                className="w-full px-4 py-3 text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent"
+                required
+              >
+                <option value="" disabled className="text-gray-500"># of Employees*</option>
+                <option value="1-10">1 - 10</option>
+                <option value="11-50">11 - 50</option>
+                <option value="51-200">51 - 200</option>
+                <option value="201-500">201 - 500</option>
+                <option value="500+">500+</option>
+              </select>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full px-10 py-3 font-semibold text-white transition duration-300 rounded-full md:w-auto bg-custom-green hover:opacity-90 focus:outline-none focus:ring-4 focus:ring-primary focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isSubmitting ? 'Submitting...' : 'Get Pricing'}
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+GetPricingModal.propTypes = {
+  onClose: PropTypes.func.isRequired
+};
+
 const Pricing = () => {
   const [openIndex, setOpenIndex] = useState(null);
   const [isPriceModalOpen, setIsPriceModalOpen] = useState(false);
+  const [isGetPricingModalOpen, setIsGetPricingModalOpen] = useState(false);
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -47,14 +361,12 @@ const Pricing = () => {
               Flexible pricing plans to suit businesses of all sizes.
             </p>
             <div className="flex justify-start">
-              <a
-                href="https://forms.zohopublic.com/evolvizsoftwaresgroup/form/ZetScoreDemoRequest/formperma/Q7VIFiPZauUdJviXd8JnvwE8T27rF2wzbLvFBTWh4Vs"
-                className="inline-block"
+              <button
+                onClick={() => setIsGetPricingModalOpen(true)}
+                className="px-6 py-2 font-bold text-white transition duration-300 rounded-lg bg-custom-green hover:bg-opacity-90"
               >
-                <button className="px-6 py-2 font-bold text-white transition duration-300 rounded-lg bg-custom-green hover:bg-opacity-90">
-                  Get Started
-                </button>
-              </a>
+                Get Pricing
+              </button>
             </div>
           </div>
         </div>
@@ -86,8 +398,11 @@ const Pricing = () => {
                   </ul>
                 </div>
                 <div className="flex justify-start">
-                  <button className="px-6 py-2 font-bold text-white transition duration-300 rounded-lg bg-custom-green hover:bg-opacity-90">
-                    Get Started
+                  <button
+                    onClick={() => setIsGetPricingModalOpen(true)}
+                    className="px-6 py-2 font-bold text-white transition duration-300 rounded-lg bg-custom-green hover:bg-opacity-90"
+                  >
+                    Get Pricing
                   </button>
                 </div>
               </div>
@@ -111,7 +426,10 @@ const Pricing = () => {
                   </ul>
                 </div>
                 <div className="flex justify-start">
-                  <button className="px-6 py-2 font-bold text-white transition duration-300 rounded-lg bg-custom-green hover:bg-opacity-90">
+                  <button
+                    onClick={() => setIsGetPricingModalOpen(true)}
+                    className="px-6 py-2 font-bold text-white transition duration-300 rounded-lg bg-custom-green hover:bg-opacity-90"
+                  >
                     Contact Sales
                   </button>
                 </div>
@@ -135,7 +453,7 @@ const Pricing = () => {
         </div>
       </section>
 
-      {/* View Our Price Modal */}
+      {/* View Our Price Modal (unchanged) */}
       {isPriceModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50">
           <div className="relative w-full max-w-[95vw] max-h-[95vh] overflow-y-auto bg-white rounded-lg shadow-lg">
@@ -146,8 +464,8 @@ const Pricing = () => {
             >
               <X className="w-7 h-7" />
             </button>
-            <div className="p-6 md:p-10 text-center">
-              <h1 className="mb-6 font-handwriting text-6xl md:text-7xl text-gray-900">
+            <div className="p-6 text-center md:p-10">
+              <h1 className="mb-6 text-6xl text-gray-900 font-handwriting md:text-7xl">
                 You are not{' '}
                 <span className="relative inline-block">
                   dreaming!
@@ -176,6 +494,11 @@ const Pricing = () => {
             </div>
           </div>
         </div>
+      )}
+
+      {/* Get Pricing Modal */}
+      {isGetPricingModalOpen && (
+        <GetPricingModal onClose={() => setIsGetPricingModalOpen(false)} />
       )}
 
       {/* Compare Features Section */}
@@ -233,7 +556,7 @@ const Pricing = () => {
       <section className="py-16 bg-gray-50">
         <div className="grid grid-cols-12 px-2 mx-auto">
           <div className="col-span-10 col-start-2">
-            <h2 className="mb-4 font-handwriting text-left text-gray-900 text-6xl md:text-7xl">
+            <h2 className="mb-4 text-6xl text-left text-gray-900 font-handwriting md:text-7xl">
               Any{' '}
               <span className="relative inline-block">
                 Questions

@@ -2,12 +2,11 @@ import heroImage from "../assets/group-afro-americans-working-together.jpg";
 import { Link } from "react-router-dom";
 
 function Hero() {
-  // Demo request form URL
-  const demoRequestUrl = "https://forms.zohopublic.com/evolvizsoftwaresgroup/form/ZetScoreDemoRequest/formperma/Q7VIFiPZauUdJviXd8JnvwE8T27rF2wzbLvFBTWh4Vs";
-
-  const handleDemoRequestClick = () => {
-    // Open the demo request form in a new tab
-    window.open(demoRequestUrl, '_blank', 'noopener,noreferrer');
+  const handleScheduleDemoClick = () => {
+    const demoSection = document.getElementById('demo');
+    if (demoSection) {
+      demoSection.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -29,9 +28,9 @@ function Hero() {
                   GET STARTED
                 </button>
               </Link>
-              
-              <button 
-                onClick={handleDemoRequestClick}
+
+              <button
+                onClick={handleScheduleDemoClick}
                 className="px-6 py-3 mb-8 font-bold text-white transition duration-300 bg-transparent border-2 border-white rounded-lg font-primary hover:bg-white hover:text-custom-green"
               >
                 SCHEDULE A DEMO
