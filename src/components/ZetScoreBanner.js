@@ -1,12 +1,9 @@
+import { useState } from 'react';
 import { Icon } from '@iconify/react';
-import { useNavigate } from 'react-router-dom';
+import GetPricingModal from './GetPricingModal';
 
 const ZetScoreBanner = () => {
-  const navigate = useNavigate();
-
-  const handleGetPricingClick = () => {
-    navigate('/contact-us');
-  };
+  const [isGetPricingModalOpen, setIsGetPricingModalOpen] = useState(false);
 
   return (
     <section className="py-16 bg-black">
@@ -31,7 +28,7 @@ const ZetScoreBanner = () => {
           </div>
           <div className="flex-shrink-0">
             <button
-              onClick={handleGetPricingClick}
+              onClick={() => setIsGetPricingModalOpen(true)}
               className="px-8 py-3 font-bold text-black transition duration-300 bg-white rounded-lg hover:bg-gray-100"
             >
               Get Pricing
@@ -39,6 +36,10 @@ const ZetScoreBanner = () => {
           </div>
         </div>
       </div>
+
+      {isGetPricingModalOpen && (
+        <GetPricingModal onClose={() => setIsGetPricingModalOpen(false)} />
+      )}
     </section>
   );
 };
