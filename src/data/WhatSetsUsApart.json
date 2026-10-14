@@ -27,7 +27,7 @@
     "fullDescription": "Our Background Checks feature allows you to initiate and track verification of key documents. We send requests to the relevant institutions (for example, Universities / Institutions) to confirm Degrees, Certificates, Licenses, Employment History and other claimed qualifications. This ensures all information provided is genuine, helping you make confident hiring decisions while staying compliant.",
     "image": "/backgroundcheck.jpg",
     "author": "ZetScore Team",
-    "date": "2025-08-15",
+    "date": "2026-10-9",
     "readingTime": "4 min read",
     "overview": "Get reliable confirmation of a candidate's educational and professional background through direct institutional verification — simple, secure, and thorough.",
     "keyBenefits": [
@@ -37,6 +37,49 @@
       "Professional License Verifications",
       "Professional References verification",
       "Keeps the process organized and documented"
+    ],
+    "servicesHeading": "Pre-employment Background Checks",
+    "services": [
+      {
+        "icon": "material-symbols:badge-outline",
+        "title": "Identity Verification",
+        "description": "The initial stage of our screening process to confirm the true identity of a candidate. This involves scrutinizing various documents and information provided by the individual to ensure accuracy and authenticity, such as government-issued IDs, passports, social security numbers, and personal details."
+      },
+      {
+        "icon": "material-symbols:gavel",
+        "title": "Criminal Background Checks",
+        "description": "We obtain comprehensive reports regarding any past criminal convictions, arrests, or legal issues of an individual, enabling businesses to avoid associations with individuals convicted of theft, fraud, or other dishonest behaviors."
+      },
+      {
+        "icon": "material-symbols:school-outline",
+        "title": "Academic Qualification",
+        "description": "Conducting thorough education background checks and verification for qualifications, including PHDs, Masters degrees, diplomas, certificates, and even KCSE certificates. We confirm each qualification directly with the universities and institutions concerned, so the credentials provided by employees or candidates are legitimate and accurate."
+      },
+      {
+        "icon": "material-symbols:business-center-outline",
+        "title": "Employment History Verification",
+        "description": "Contacting current and previous employers to verify crucial details such as dates of employment, positions held, reasons for leaving, duties, roles, responsibilities, eligibility for re-hire, and conduct gap analysis streamlining pre-employment screening and ensuring accurate and reliable background checks."
+      },
+            {
+        "icon": "material-symbols:receipt-long-outline",
+        "title": "Payslip Verification",
+        "description": "Confirm the authenticity and accuracy of an individual's payslip. This process is commonly employed by employers, financial institutions, and other organizations to verify a person's employment status, salary, and overall financial stability. It is especially important during job applications, loan approvals, and other financial transactions where proof of income is required."
+      },
+      {
+        "icon": "material-symbols:workspace-premium-outline",
+        "title": "Professional License Verification",
+        "description": "Confirming the authenticity and validity of professional licenses and certifications by cross-referencing with the relevant licensing authorities and accrediting bodies."
+      },
+      {
+        "icon": "material-symbols:groups-outline",
+        "title": "Professional Reference Verification",
+        "description": "Reaching out to referees enables us to get valuable insights into the candidate's or service provider's performance, character, abilities, skills, work ethics, and interpersonal skills. These references are former employers, supervisors, colleagues, or other professional contacts who can provide relevant information."
+      },
+      {
+        "icon": "material-symbols:desktop-windows-outline",
+        "title": "Moonlighting Check",
+        "description": "Check whether an employee is engaged in a secondary job or business activity that could potentially conflict with their primary employment. This check helps to ensure that their employees are not working for competitors, violating non-compete agreements, or engaging in activities that could affect their performance, availability, or loyalty to the primary job."
+      }
     ],
     "challengesSolved": "We remove the hassle and uncertainty of manual follow-ups, phone calls, fake license or educational diplomat and potential fraud by automating institutional checks with our team on the ground and providing a clear audit trail."
   },

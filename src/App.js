@@ -86,8 +86,6 @@ const WhatSetsUsApartScroll = () => {
   );
 };
 
-
-
 // Layout component with Navbar and Footer
 const Layout = ({ children }) => {
   return (
