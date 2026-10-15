@@ -14,12 +14,12 @@
     "services": [
       {
         "icon": "material-symbols:devices",
-        "title": "Everything in One Digital Platform",
+        "title": "Digital One-Stop Onboarding",
         "description": "Keep onboarding information, documents, tasks, and communication in one centralized digital platform instead of scattered emails and paperwork."
       },
       {
         "icon": "material-symbols:manage-accounts",
-        "title": "Manager Involvement",
+        "title": "HR / Manager Onboarding Toolkit",
         "description": "Allow managers to contribute personalized documents, questions, onboarding information, and first-day plans for new employees."
       },
       {
@@ -29,7 +29,7 @@
       },
       {
         "icon": "material-symbols:groups",
-        "title": "Better Team Connection",
+        "title": "Social Onboarding and Team Connection",
         "description": "Help new employees connect with their team through bio updates, personal information, and team introductions."
       },
       {
@@ -119,23 +119,23 @@
     "services": [
       {
         "icon": "material-symbols:upload-file",
-        "title": "Easy Document Upload",
-        "description": "Allow employees to easily upload the required work authorization documents through the platform."
-      },
-      {
-        "icon": "material-symbols:fact-check",
-        "title": "Quick Review and Approval",
-        "description": "Enable managers or HR teams to efficiently review and approve submitted documents."
+        "title": "Smooth Upload, Review and Approval",
+        "description": "Allow employees to easily upload the required work authorization documents through the platform. Enable managers or HR teams to efficiently review and approve submitted documents."
       },
       {
         "icon": "material-symbols:gavel",
-        "title": "Legal Compliance from Day One",
+        "title": "Day-One Compliance and Accuracy",
         "description": "Help organizations ensure that employees meet the required work authorization and compliance requirements before starting work."
       },
       {
         "icon": "material-symbols:lock",
         "title": "Secure Document Storage",
         "description": "Keep work authorization documents securely stored and easily accessible when required for audits or verification."
+      },
+      {
+        "icon": "material-symbols:fact-check",
+        "title": "Proactive Paperwork Verification",
+        "description": "Reduce delays caused by missing, incomplete, or unverified paperwork before an employee begins work."
       },
       {
         "icon": "material-symbols:timer",
