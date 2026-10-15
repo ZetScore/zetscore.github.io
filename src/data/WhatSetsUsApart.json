@@ -23,11 +23,6 @@
         "description": "Allow managers to contribute personalized documents, questions, onboarding information, and first-day plans for new employees."
       },
       {
-        "icon": "material-symbols:verified-user",
-        "title": "Quick Compliance",
-        "description": "Simplify and speed up work authorization, background checks, and other onboarding compliance requirements."
-      },
-      {
         "icon": "material-symbols:groups",
         "title": "Social Onboarding and Team Connection",
         "description": "Help new employees connect with their team through bio updates, personal information, and team introductions."
@@ -135,11 +130,6 @@
       {
         "icon": "material-symbols:fact-check",
         "title": "Proactive Paperwork Verification",
-        "description": "Reduce delays caused by missing, incomplete, or unverified paperwork before an employee begins work."
-      },
-      {
-        "icon": "material-symbols:timer",
-        "title": "Prevent Delays in Starting Work",
         "description": "Reduce delays caused by missing, incomplete, or unverified paperwork before an employee begins work."
       }
     ],
