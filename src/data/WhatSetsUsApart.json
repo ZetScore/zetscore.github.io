@@ -10,12 +10,33 @@
     "date": "2025-07-15",
     "readingTime": "5 min read",
     "overview": "Transform your new hire experience from paperwork chaos to a structured, digital flow that covers everything from legal compliance to personal introductions and day-one readiness.",
-    "keyBenefits": [
-      "Everything in one digital platform no scattered emails or paper",
-      "Manager involvement for personalized documents, questions, and first-day plans",
-      "Quick compliance with work authorization and background checks",
-      "Better team connection through bio updates and personal info sharing",
-      "Improved new hire confidence and faster productivity"
+    "servicesHeading": "Key Benefits",
+    "services": [
+      {
+        "icon": "material-symbols:devices",
+        "title": "Everything in One Digital Platform",
+        "description": "Keep onboarding information, documents, tasks, and communication in one centralized digital platform instead of scattered emails and paperwork."
+      },
+      {
+        "icon": "material-symbols:manage-accounts",
+        "title": "Manager Involvement",
+        "description": "Allow managers to contribute personalized documents, questions, onboarding information, and first-day plans for new employees."
+      },
+      {
+        "icon": "material-symbols:verified-user",
+        "title": "Quick Compliance",
+        "description": "Simplify and speed up work authorization, background checks, and other onboarding compliance requirements."
+      },
+      {
+        "icon": "material-symbols:groups",
+        "title": "Better Team Connection",
+        "description": "Help new employees connect with their team through bio updates, personal information, and team introductions."
+      },
+      {
+        "icon": "material-symbols:trending-up",
+        "title": "Improved New Hire Confidence & Productivity",
+        "description": "Give new hires the information and resources they need before and during their first days, helping them feel prepared and become productive faster."
+      }
     ],
     "challengesSolved": "We fix the usual onboarding headaches: lost documents, delayed signatures, forgotten compliance steps, generic experiences, and poor first impressions that lead to early turnover or confusion."
   },
@@ -60,7 +81,7 @@
         "title": "Employment History Verification",
         "description": "Contacting current and previous employers to verify crucial details such as dates of employment, positions held, reasons for leaving, duties, roles, responsibilities, eligibility for re-hire, and conduct gap analysis streamlining pre-employment screening and ensuring accurate and reliable background checks."
       },
-            {
+      {
         "icon": "material-symbols:receipt-long-outline",
         "title": "Payslip Verification",
         "description": "Confirm the authenticity and accuracy of an individual's payslip. This process is commonly employed by employers, financial institutions, and other organizations to verify a person's employment status, salary, and overall financial stability. It is especially important during job applications, loan approvals, and other financial transactions where proof of income is required."
@@ -94,12 +115,33 @@
     "date": "2025-09-15",
     "readingTime": "6 min read",
     "overview": "Make sure every new hire is legally cleared to work by handling document submission and verification digitally — fast, compliant, and stress-free.",
-    "keyBenefits": [
-      "Easy document upload for employees",
-      "Quick review and approval by managers or HR",
-      "Ensures legal compliance from day one",
-      "Secure storage and easy access for audits",
-      "Prevents delays in starting work due to missing paperwork"
+    "servicesHeading": "Key Benefits",
+    "services": [
+      {
+        "icon": "material-symbols:upload-file",
+        "title": "Easy Document Upload",
+        "description": "Allow employees to easily upload the required work authorization documents through the platform."
+      },
+      {
+        "icon": "material-symbols:fact-check",
+        "title": "Quick Review and Approval",
+        "description": "Enable managers or HR teams to efficiently review and approve submitted documents."
+      },
+      {
+        "icon": "material-symbols:gavel",
+        "title": "Legal Compliance from Day One",
+        "description": "Help organizations ensure that employees meet the required work authorization and compliance requirements before starting work."
+      },
+      {
+        "icon": "material-symbols:lock",
+        "title": "Secure Document Storage",
+        "description": "Keep work authorization documents securely stored and easily accessible when required for audits or verification."
+      },
+      {
+        "icon": "material-symbols:timer",
+        "title": "Prevent Delays in Starting Work",
+        "description": "Reduce delays caused by missing, incomplete, or unverified paperwork before an employee begins work."
+      }
     ],
     "challengesSolved": "We eliminate the back-and-forth of emailing sensitive documents, lost files, and compliance gaps that can delay onboarding or create legal risks for the business."
   }
