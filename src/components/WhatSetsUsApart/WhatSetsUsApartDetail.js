@@ -1,23 +1,9 @@
+import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { useParams, Link } from "react-router-dom";
 import WhatSetsUsApartData from "../../data/WhatSetsUsApart.json";
 import { Icon } from "@iconify/react";
 import PropTypes from "prop-types";
-
-const getCardTone = (index) => {
-  const mobileIsGreen = index % 2 === 0;
-  const row = Math.floor(index / 2);
-  const col = index % 2;
-  const tabletIsGreen = (row + col) % 2 === 0;
-
-  const mobileTone = mobileIsGreen
-    ? "bg-custom-green bg-opacity-10"
-    : "bg-gray-100";
-  const tabletTone = tabletIsGreen
-    ? "md:bg-custom-green md:bg-opacity-10"
-    : "md:bg-gray-100";
-
-  return `${mobileTone} ${tabletTone}`;
-};
 
 // UPDATED: Titles now align left (flex-start) instead of center
 const SectionHeading = ({ id, children }) => (
@@ -37,8 +23,192 @@ SectionHeading.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
+const serviceShape = PropTypes.shape({
+  icon: PropTypes.string,
+  image: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string,
+});
+
+/**
+ * Service card. Grey by default, light green on hover.
+ *
+ * - With `service.image`: image sits on top, title + arrow underneath.
+ * - Without an image: a solid icon badge sits top-left, the title is anchored
+ *   to the bottom-left, and the arrow sits top-right. Cards stretch to the
+ *   tallest card in their row, so sizing stays consistent.
+ */
+const ServiceCard = ({ service, onOpen }) => {
+  const arrow = (
+    <span className="flex items-center justify-center flex-shrink-0 w-9 h-9 text-gray-500 transition-all duration-300 bg-white rounded-full group-hover:bg-custom-green group-hover:text-white">
+      <Icon
+        icon="material-symbols:arrow-outward-rounded"
+        aria-hidden="true"
+        className="w-5 h-5"
+      />
+    </span>
+  );
+
+  return (
+    <button
+      type="button"
+      onClick={() => onOpen(service)}
+      aria-haspopup="dialog"
+      aria-label={`View details: ${service.title}`}
+      className="group flex flex-col w-full h-full p-6 text-left transition-all duration-300 bg-gray-200 min-h-[15rem] rounded-2xl hover:-translate-y-1 hover:bg-custom-green hover:bg-opacity-20 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-custom-green focus-visible:ring-offset-2"
+    >
+      {service.image ? (
+        <>
+          <div className="h-36 mb-5 overflow-hidden bg-white rounded-xl">
+            <img
+              src={service.image}
+              alt=""
+              loading="lazy"
+              className="object-cover w-full h-full transition-transform duration-500 ease-out group-hover:scale-105"
+            />
+          </div>
+          <div className="flex items-end justify-between gap-3 mt-auto">
+            <h3 className="text-lg font-bold leading-snug text-gray-900">
+              {service.title}
+            </h3>
+            {arrow}
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="flex items-start justify-between">
+            <span className="flex items-center justify-center w-14 h-14 text-custom-green transition-all duration-300 bg-white shadow-sm rounded-2xl group-hover:bg-custom-green group-hover:text-white">
+              <Icon
+                icon={service.icon}
+                aria-hidden="true"
+                className="w-7 h-7"
+              />
+            </span>
+            {arrow}
+          </div>
+          <h3 className="pt-10 mt-auto text-lg font-bold leading-snug text-gray-900">
+            {service.title}
+          </h3>
+        </>
+      )}
+    </button>
+  );
+};
+
+ServiceCard.propTypes = {
+  service: serviceShape.isRequired,
+  onOpen: PropTypes.func.isRequired,
+};
+
+const FOCUSABLE_SELECTOR =
+  'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
+
+// Modal shows the description only. The title is exposed to assistive tech
+// through aria-label so the dialog is still announced correctly.
+const ServiceModal = ({ service, onClose }) => {
+  const dialogRef = useRef(null);
+  const closeButtonRef = useRef(null);
+
+  useEffect(() => {
+    const previouslyFocused = document.activeElement;
+    const previousOverflow = document.body.style.overflow;
+
+    // Lock background scroll while the modal is open
+    document.body.style.overflow = "hidden";
+    closeButtonRef.current?.focus();
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        onClose();
+        return;
+      }
+
+      // Keep keyboard focus inside the dialog
+      if (event.key === "Tab" && dialogRef.current) {
+        const focusable = dialogRef.current.querySelectorAll(FOCUSABLE_SELECTOR);
+        if (focusable.length === 0) return;
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+      // Return focus to the card that opened the modal
+      if (previouslyFocused instanceof HTMLElement) {
+        previouslyFocused.focus();
+      }
+    };
+  }, [onClose]);
+
+  return createPortal(
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-label={service.title}
+    >
+      {/* Backdrop: click anywhere outside the panel to close */}
+      <div
+        className="absolute inset-0 bg-black bg-opacity-50"
+        onClick={onClose}
+        aria-hidden="true"
+      ></div>
+
+      <div
+        ref={dialogRef}
+        className="relative w-full max-w-xl max-h-[90vh] overflow-y-auto bg-white shadow-xl rounded-2xl"
+      >
+        <button
+          ref={closeButtonRef}
+          type="button"
+          onClick={onClose}
+          aria-label="Close"
+          className="absolute flex items-center justify-center w-9 h-9 text-gray-600 transition rounded-full top-3 right-3 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-custom-green"
+        >
+          <Icon
+            icon="material-symbols:close-rounded"
+            aria-hidden="true"
+            className="w-5 h-5"
+          />
+        </button>
+
+        <p className="p-6 pt-14 text-base leading-relaxed text-gray-700 sm:p-8 sm:pt-14 sm:text-lg">
+          {service.description}
+        </p>
+      </div>
+    </div>,
+    document.body
+  );
+};
+
+ServiceModal.propTypes = {
+  service: serviceShape.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
+
 const WhatSetsUsApartDetail = () => {
   const { id } = useParams();
+  const [activeService, setActiveService] = useState(null);
+
+  const closeModal = useCallback(() => setActiveService(null), []);
+
+  // Make sure a modal never carries over when navigating to another feature
+  useEffect(() => {
+    setActiveService(null);
+  }, [id]);
 
   // Find the feature by ID
   const feature = Array.isArray(WhatSetsUsApartData)
@@ -114,28 +284,14 @@ const WhatSetsUsApartDetail = () => {
                     {feature.servicesHeading || feature.title}
                   </SectionHeading>
 
-                  {/* 3 cards per row on large screens */}
-                  <ul className="grid grid-cols-1 gap-4 p-4 md:grid-cols-2 lg:grid-cols-3 sm:gap-6 sm:p-6 lg:p-8 rounded-2xl bg-custom-green bg-opacity-5">
-                    {services.map((service, index) => (
-                      <li
-                        key={service.title}
-                        className={`flex flex-col items-center h-full p-6 text-center rounded-xl shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-md sm:p-8 ${getCardTone(
-                          index
-                        )}`}
-                      >
-                        <div className="flex items-center justify-center w-16 h-16 mb-5 bg-white rounded-full shadow-sm">
-                          <Icon
-                            icon={service.icon}
-                            aria-hidden="true"
-                            className="w-8 h-8 text-custom-green"
-                          />
-                        </div>
-                        <h3 className="mb-3 text-lg font-bold text-gray-900 sm:text-xl">
-                          {service.title}
-                        </h3>
-                        <p className="leading-relaxed text-gray-600">
-                          {service.description}
-                        </p>
+                  {/* 1 column on mobile, 2 on tablet, 4 per row on desktop */}
+                  <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 sm:gap-6">
+                    {services.map((service) => (
+                      <li key={service.title} className="h-full">
+                        <ServiceCard
+                          service={service}
+                          onOpen={setActiveService}
+                        />
                       </li>
                     ))}
                   </ul>
@@ -200,6 +356,11 @@ const WhatSetsUsApartDetail = () => {
           </div>
         </div>
       </section>
+
+      {/* Service details modal */}
+      {activeService && (
+        <ServiceModal service={activeService} onClose={closeModal} />
+      )}
     </>
   );
 };
